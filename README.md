@@ -68,6 +68,26 @@ Saída em `~/projetos/output/musicas/<slug>/` (mude com `MUSICA_OUT`):
 
 Tudo vive no `spec.json`, então `regen` refaz com o ajuste sem repetir download nem análise.
 
+## Escrevendo a letra (pegadinha real)
+
+Estrutura e direção vão em **colchetes**; parênteses o Suno costuma **cantar**
+como ad-lib. Ou seja, `(Homem, falado, grave)` vira vocal cantando "homem,
+falado, grave". O certo:
+
+```
+[Intro] [Spoken Word] [Male Vocal]
+Ninguém te conta o preço
+
+[Chorus] [Female Vocal] [Belting]
+E eu vou! Mesmo que doa, mesmo que arda
+(Na pedra!)          <- isto SIM é pra ser cantado, então parêntese está certo
+[Gang Vocals]
+Vale a pena, vale a pena
+```
+
+Tags úteis: `[Verse]` `[Chorus]` `[Bridge]` `[Outro]` `[Male Vocal]`
+`[Female Vocal]` `[Spoken Word]` `[Gang Vocals]` `[Belting]` `[Whisper]`.
+
 ## Custo (medido, 2026-08-05)
 
 **12 créditos por geração** (V5, custom mode, 2 faixas de ~3 min) ≈ US$ 0,06 —

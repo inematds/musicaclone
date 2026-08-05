@@ -78,6 +78,12 @@ cinematic production`. Frase corrida funciona pior que tags.
 **Letra** vai em `prompt`, com marcadores de estrutura: `[Verse]`, `[Chorus]`,
 `[Bridge]`, `[Outro]`.
 
+**Letra: colchete dirige, parêntese canta.** `(Homem, falado, grave)` vira vocal
+cantando "homem, falado, grave" — testado. Direção vai em colchete:
+`[Spoken Word]`, `[Male Vocal]`, `[Female Vocal]`, `[Gang Vocals]`, `[Belting]`.
+Parêntese só pra ad-lib que deve mesmo ser cantado: `(Na pedra!)`.
+
+
 Depois de um resultado bom dá pra criar uma **persona** (voz/estilo reutilizável)
 a partir do `taskId` + `audioId` e usar `personaId` nas próximas. Ainda não
 implementado no script, e **o endpoint não está confirmado** — só vi a página de
