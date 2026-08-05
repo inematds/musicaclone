@@ -135,6 +135,9 @@ parse_flags() { # parse_flags <spec.json> [flags...]
       --duration)     put "$s" '.duration=($v|tonumber)' --arg v "$2"; shift 2;;
       --instrumental) put "$s" '.instrumental=true'; shift;;
       --sem-referencia) put "$s" '.modo="estilo"'; shift;;
+      # usa um ref.mp3 ja colocado na pasta como referencia (ex.: refazer a
+      # mesma musica em outro idioma mantendo a melodia)
+      --cover)        put "$s" '.modo="cover"'; shift;;
       *) echo "flag desconhecida: $1" >&2; shift;;
     esac
   done
