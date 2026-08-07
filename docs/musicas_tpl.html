@@ -96,6 +96,8 @@
   .mlab span{text-transform:none;letter-spacing:0;opacity:.7}
   .semmov{font-size:.78rem;color:var(--mut);padding:.8em 0}
   .mov .ph{stroke:#f87171;stroke-width:2}
+  .hist,.dlg{width:100%;height:auto;display:block;margin:.3em 0 .2em}
+  .hist .hlab,.dlg .hlab{font:8px "JetBrains Mono",monospace;fill:var(--mut)}
   .video{margin-top:14px;font-size:.88rem;color:var(--mut);border-top:1px dashed var(--line);padding-top:12px}
   .video span{font-family:Sora;color:var(--txt)}
 
@@ -136,6 +138,7 @@
     <a class="sec" href="#acervo">Acervo</a>
     <a class="sec" href="#referencias">Referências</a>
     <a class="sec" href="#grafico">Gráfico</a>
+    <a class="sec" href="#classificar">Classificar</a>
     <a class="sec" href="#licoes">O que aprendemos</a>
     <button class="tgl" id="tgl" title="alternar tema">🌙</button>
     <a class="btn ghost" href="https://github.com/inematds/musicaclone" target="_blank" rel="noopener">GitHub</a>
@@ -249,6 +252,81 @@
     182 notas sustentadas e 41 dB. A melhor coisa que o Suno produziu em todo o acervo tem 44
     sustentadas. Não é questão de timbre: é que a voz humana segura frase e varia volume de um jeito
     que o modelo raramente faz. Esse é o teto real com que estamos lidando.</p>
+  </div>
+</section>
+
+
+<section id="classificar">
+  <div class="wrap">
+    <h2>Como classificar uma voz</h2>
+    <p class="sub">O vocabulário mínimo para descrever qualquer voz, o número que mede cada coisa
+    nesta página, e a palavra que pede aquilo ao Suno. É isso que transforma "gostei dessa" numa
+    instrução que dá para repetir.</p>
+    <div class="tabwrap">
+      <table>
+        <thead><tr><th>conceito</th><th>o que é</th><th>onde ver aqui</th><th>como pedir</th></tr></thead>
+        <tbody>
+        <tr><td><b>Tessitura</b></td><td>a faixa de notas onde a voz é confortável</td>
+            <td>f0 mediana e o gráfico "onde a voz passa o tempo"</td>
+            <td><code>low register</code>, <code>high belt range</code></td></tr>
+        <tr><td><b>Registro</b></td><td>o mecanismo: peito (grosso, forte), cabeça (leve), mix (o meio), falsete (soprado)</td>
+            <td>% em belt no gráfico de barras</td>
+            <td><code>driven chest mix</code>, <code>no falsetto</code></td></tr>
+        <tr><td><b>Belt</b></td><td>levar o peso do peito para o agudo — é o "grito" cantado</td>
+            <td>faixa 440-700 Hz nas barras</td>
+            <td><code>emotional belting</code></td></tr>
+        <tr><td><b>Vibrato</b></td><td>oscilação da nota: taxa (Hz) e profundidade (cents)</td>
+            <td>métrica "vibrato" em cada faixa</td>
+            <td><code>wide slow vibrato</code> ou <code>straight tone</code></td></tr>
+        <tr><td><b>Sustentação</b></td><td>quanto tempo a voz segura uma nota</td>
+            <td>métrica "sustentadas" e a linha reta no gráfico de movimento</td>
+            <td><code>long sustained notes</code></td></tr>
+        <tr><td><b>Ataque</b></td><td>como a nota começa: direta ou escorregando por baixo (scoop)</td>
+            <td>saltos no início das frases no gráfico de movimento</td>
+            <td><code>scooped attacks</code>, <code>direct attack</code></td></tr>
+        <tr><td><b>Textura</b></td><td>limpa, rasgada (grit), soprada, nasal</td>
+            <td>brilho em Hz — acima de 2400 soa rasgado</td>
+            <td><code>gritty rasp</code>, <code>clean tone</code>, <code>breathy</code></td></tr>
+        <tr><td><b>Dinâmica</b></td><td>a distância entre o mais baixo e o mais alto</td>
+            <td>métrica "dinâmica" e a linha cinza do movimento</td>
+            <td><code>quiet intro</code> + <code>explosive chorus</code></td></tr>
+        <tr><td><b>Fraseado</b></td><td>a relação com o tempo: em cima, atrasado (layback), apressado</td>
+            <td>tamanho e espaçamento dos blocos no diálogo</td>
+            <td><code>laid back phrasing</code></td></tr>
+        <tr><td><b>Interação</b></td><td>como as vozes se revezam e quanto silêncio deixam</td>
+            <td>gráfico "diálogo": vão na troca e blocos azuis</td>
+            <td><code>zero gap</code>, <code>overlapping vocal handoff</code></td></tr>
+        <tr><td><b>Tom</b></td><td>a tonalidade: nota central e se é maior (aberto) ou menor (tenso)</td>
+            <td>coluna "tom" e o histograma de notas</td>
+            <td><code>in D minor</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 style="margin-top:2.2em">A receita que funciona</h2>
+    <p class="sub">Depois de comparar as 15, esta é a ordem que produziu os melhores resultados.
+    O erro comum é pedir só o gênero e esperar que a voz venha junto.</p>
+    <div class="tabwrap" style="padding:20px">
+      <p><b class="amb">1. Gênero primeiro, e específico.</b> <code>cinematic pop rock, power ballad</code>
+      carrega mais informação que <code>rock</code>. O gênero decide instrumentação, andamento e
+      até o tipo de voz que o modelo escolhe.</p>
+      <p><b class="amb">2. Nomeie o trecho calmo.</b> <code>quiet piano intro</code> foi a instrução
+      mais eficiente de todas as que testamos — mais que pedir "contraste dinâmico", porque nomeia
+      o instrumento e o momento. Sem um trecho baixo, não existe explosão.</p>
+      <p><b class="amb">3. Descreva o mecanismo da voz, não a emoção.</b> <code>driven chest mix,
+      no falsetto, wide slow vibrato</code> funciona; "voz emocionada" não. O modelo entende
+      técnica vocal melhor que adjetivo.</p>
+      <p><b class="amb">4. Diga como as vozes se encontram.</b> <code>zero gap, instant overlapping
+      vocal handoff</code>. Sem isso o modelo deixa quase um segundo de silêncio entre a chamada e
+      a resposta, e o efeito de duelo se perde.</p>
+      <p><b class="amb">5. Negative tags contra o que você não quer.</b>
+      <code>constant screaming, flat dynamics, childish voice, thin vocals</code>. Foi o que
+      impediu de repetir o achatamento das primeiras.</p>
+      <p><b class="amb">6. styleWeight 0,85 ou mais</b> quando o caráter importa. A única música
+      que fizemos com 0,72 foi a que saiu sem personalidade.</p>
+      <p><b class="amb">7. Idioma explícito.</b> <code>english lyrics</code> ou
+      <code>brazilian portuguese</code> — o modelo não deduz do resto do prompt.</p>
+    </div>
   </div>
 </section>
 

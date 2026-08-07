@@ -105,6 +105,57 @@ def movimento(m):
     return "".join(s)
 
 
+
+
+def notas_hist(m):
+    """Quais notas a voz usa — mostra o tom de forma concreta."""
+    nt = m.get("notas") or []
+    if not nt or sum(nt) == 0:
+        return ""
+    W, H, g = 300, 66, 3
+    bw = (W - g * 11) / 12
+    mx = max(nt)
+    tom = (m.get("tom") or "").split(" ")[0]
+    s = [f'<svg viewBox="0 0 {W} {H+16}" class="hist" role="img" aria-label="notas usadas">']
+    for i, v in enumerate(nt):
+        h = max(1.5, (v / mx) * H)
+        x = i * (bw + g)
+        cor = "#E2A23B" if NOTAS[i] == tom else "#475569"
+        s.append(f'<rect x="{x:.1f}" y="{H-h:.1f}" width="{bw:.1f}" height="{h:.1f}" rx="2" fill="{cor}"><title>{NOTAS[i]}: {v}%</title></rect>')
+        s.append(f'<text x="{x+bw/2:.1f}" y="{H+12}" class="hlab">{NOTAS[i]}</text>')
+    s.append("</svg>")
+    return "".join(s)
+
+
+def dialogo(m):
+    """Cada frase cantada vira um bloco. Altura = registro, vao = silencio entre
+    as vozes. E aqui que se ve se a resposta entra colada ou com respiro."""
+    fl = m.get("frases_lista") or []
+    if len(fl) < 4:
+        return ""
+    W, H = 300, 60
+    t0 = fl[0][0]
+    t1 = max(f[1] for f in fl)
+    span = (t1 - t0) or 1
+    alt = [f[2] for f in fl]
+    lo, hi = min(alt), max(alt)
+    if hi - lo < 3:
+        lo, hi = lo - 1.5, hi + 1.5
+    s = [f'<svg viewBox="0 0 {W} {H}" class="dlg" role="img" aria-label="dialogo entre as vozes">']
+    ant = None
+    for a, b, mm in fl:
+        x = (a - t0) / span * W
+        w = max(1.2, (b - a) / span * W)
+        y = 6 + (H - 18) * (1 - (mm - lo) / (hi - lo))
+        troca = ant is not None and abs(mm - ant) > 5.0
+        cor = "#38bdf8" if troca else "#E2A23B"
+        s.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="5" rx="2.5" fill="{cor}"><title>{a:.1f}s  {nota(mm)}</title></rect>')
+        ant = mm
+    s.append(f'<text x="2" y="{H-2}" class="hlab">vao mediano {m.get("vao_mediano",0)}s · na troca {m.get("vao_na_troca",0)}s · {m.get("trocas_voz",0)} trocas</text>')
+    s.append("</svg>")
+    return "".join(s)
+
+
 def metrica(rot, val, dica=""):
     t = f' title="{html.escape(dica)}"' if dica else ""
     return f'<div class="met"{t}><b>{val}</b><span>{rot}</span></div>'
@@ -134,6 +185,10 @@ for slug in SEL:
         </div>
         <div class="mlab">movimento da voz <b>· tom {m.get("tom","?")}</b> <span>(confianca {m.get("tom_conf",0)})</span></div>
         {movimento(m)}
+        <div class="mlab">dialogo entre as vozes <span>(azul = troca de registro)</span></div>
+        {dialogo(m)}
+        <div class="mlab">notas usadas <span>(ambar = tonica)</span></div>
+        {notas_hist(m)}
         <div class="mlab">onde a voz passa o tempo</div>
         {barras(m["registro"])}
       </div>''')
@@ -248,6 +303,10 @@ for slug, a in AC.items():
         </div>
         <div class="mlab">movimento da voz <b>· tom {m.get("tom","?")}</b> <span>(confianca {m.get("tom_conf",0)})</span></div>
         {movimento(m)}
+        <div class="mlab">dialogo entre as vozes <span>(azul = troca de registro)</span></div>
+        {dialogo(m)}
+        <div class="mlab">notas usadas <span>(ambar = tonica)</span></div>
+        {notas_hist(m)}
         <div class="mlab">onde a voz passa o tempo</div>
         {barras(m["registro"])}
       </div>''')

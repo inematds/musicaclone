@@ -79,6 +79,46 @@ def medir(src):
     r["vibrato_hz"] = round(float(np.median(vr)), 1) if vr else 0
     r["vibrato_cents"] = int(np.median(vd)) if vd else 0
 
+    # ---- FRASES, ESPACO ENTRE ELAS E TROCA DE VOZ
+    # Uma "frase" e um trecho continuo de canto. O espaco entre frases e o
+    # silencio vocal entre elas. Quando duas frases vizinhas tem alturas medias
+    # bem diferentes (>5 semitons), tratamos como TROCA de voz/registro — e o
+    # espaco nessa troca e o que diz se a resposta entra "colada" ou com respiro.
+    fr_idx = np.where(voz)[0]
+    frases = []
+    if len(fr_idx):
+        for run in np.split(fr_idx, np.where(np.diff(fr_idx) > 3)[0] + 1):
+            if len(run) < int(0.12 * sr / HOP):
+                continue
+            frases.append((run[0] * HOP / sr, run[-1] * HOP / sr,
+                           float(np.median(12 * np.log2(f0[run] / 440.0) + 69))))
+    vaos, vaos_troca, trocas = [], [], 0
+    for i in range(1, len(frases)):
+        g = frases[i][0] - frases[i - 1][1]
+        if g > 6.0:                      # buraco grande = instrumental, nao conta
+            continue
+        vaos.append(g)
+        if abs(frases[i][2] - frases[i - 1][2]) > 5.0:
+            trocas += 1
+            vaos_troca.append(g)
+    r["frases"] = len(frases)
+    r["frase_media"] = round(float(np.median([b - a for a, b, _ in frases])), 2) if frases else 0
+    r["vao_mediano"] = round(float(np.median(vaos)), 2) if vaos else 0
+    r["vao_p10"] = round(float(np.percentile(vaos, 10)), 2) if vaos else 0
+    r["trocas_voz"] = trocas
+    r["vao_na_troca"] = round(float(np.median(vaos_troca)), 2) if vaos_troca else 0
+    r["colagens"] = int(sum(1 for g in vaos_troca if g < 0.15))  # resposta "colada"
+    # lista das frases (inicio, fim, altura media em MIDI) para desenhar o dialogo
+    r["frases_lista"] = [[round(a, 2), round(b, 2), round(mm, 1)] for a, b, mm in frases[:160]]
+
+    # ---- HISTOGRAMA DE NOTAS (quais graus a voz usa)
+    if len(fv) > 50:
+        midi = 12 * np.log2(fv / 440.0) + 69
+        h = np.bincount(np.mod(np.round(midi).astype(int), 12), minlength=12)
+        r["notas"] = [round(float(v * 100.0 / h.sum()), 1) for v in h]
+    else:
+        r["notas"] = [0] * 12
+
     # ---- MOVIMENTO: contorno de altura e envelope de volume ao longo do tempo
     N = 240
     passo = max(1, nfr // N)

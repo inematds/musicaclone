@@ -23,7 +23,7 @@ if os.path.isdir(EXTRA):
     alvo += [(EXTRA, f) for f in sorted(os.listdir(EXTRA)) if f.endswith(".mp3")]
 for base, f in alvo:
     p = os.path.join(base, f)
-    if os.path.getsize(p) < 400_000:
+    if os.path.getsize(p) < 60_000:
         print("pula (curto demais):", f, flush=True); continue
     print("medindo", f, flush=True)
     try:
