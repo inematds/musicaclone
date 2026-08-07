@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>musicaclone — catálogo das músicas geradas</title>
+<meta name="description" content="Todas as músicas geradas no musicaclone: o que cada uma é, o prompt de estilo enviado ao Suno, as medições do resultado em gráfico e o player para ouvir.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#E2A23B; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#b9791d; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  body.light nav{background:rgba(246,247,249,.85)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb)}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover,nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--amb);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  @media(max-width:760px){nav .links a.sec{display:none}}
+
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(226,162,59,.22),transparent 70%);pointer-events:none}
+  .hero .wrap{padding:64px 22px}
+  .hero h1{font-size:clamp(2rem,4.6vw,3.1rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.12rem;color:var(--mut);margin:1.1em 0 0;max-width:62ch}
+  section{padding:54px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.4rem,3.2vw,1.95rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 1.8em;max-width:70ch}
+
+  .tabwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:.93rem}
+  th,td{text-align:left;padding:.75em .9em;border-bottom:1px solid var(--line)}
+  th{font-family:Sora;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:600}
+  tr:last-child td{border-bottom:0}
+  td.num{font-family:"JetBrains Mono",monospace;white-space:nowrap}
+
+  .badge{display:inline-block;font-family:Sora;font-size:.72rem;font-weight:600;padding:.3em .7em;border-radius:999px;color:var(--bc);border:1px solid var(--bc);background:color-mix(in srgb,var(--bc) 12%,transparent);white-space:nowrap}
+  .badge.sm{font-size:.68rem}
+
+  .song{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:20px;scroll-margin-top:76px}
+  .shead{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+  .shead h3{font-size:1.25rem}
+  .sdesc{color:var(--mut);font-size:.94rem;margin:.5em 0 0;max-width:68ch}
+  .prompt{margin:18px 0 4px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .plab{font-family:Sora;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:.5em}
+  .plab.neg{margin-top:1em;color:#f87171}
+  .prompt code{display:block;font-size:.83rem;line-height:1.7;color:var(--amb2);white-space:pre-wrap;word-break:break-word}
+  .pmeta{margin-top:.9em;font-size:.8rem;color:var(--mut);font-family:"JetBrains Mono",monospace}
+  .faixas{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  @media(max-width:780px){.faixas{grid-template-columns:1fr}}
+  .faixa{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .fhead{display:flex;justify-content:space-between;align-items:baseline;font-family:Sora;margin-bottom:.6em}
+  .fhead span{color:var(--mut);font-size:.85rem;font-family:"JetBrains Mono",monospace}
+  audio{width:100%;height:38px;margin-bottom:.9em}
+  .mets{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:.7em}
+  .met{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:.5em .4em;text-align:center;cursor:help}
+  .met b{display:block;font-family:Sora;font-size:.92rem;color:var(--amb)}
+  .met span{display:block;font-size:.66rem;color:var(--mut);letter-spacing:.03em}
+  .chart{width:100%;height:auto;display:block;margin-top:.4em}
+  .chart .cval{font:600 10px Sora;fill:var(--mut);text-anchor:middle}
+  .chart .clab{font:10px Inter;fill:var(--mut);text-anchor:middle}
+  .video{margin-top:14px;font-size:.88rem;color:var(--mut);border-top:1px dashed var(--line);padding-top:12px}
+  .video span{font-family:Sora;color:var(--txt)}
+
+  footer{padding:40px 0;color:var(--mut);font-size:.9rem}
+  footer .pill{display:inline-block;background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:.3em .8em;margin:0 6px 6px 0;font-size:.8rem}
+</style>
+</head>
+<body id="top">
+
+<nav><div class="wrap">
+  <a class="brand" href="index.html"><span class="emoji">🎵</span> musicaclone</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="index.html">Guia</a>
+    <a class="sec" href="#tabela">Tabela</a>
+    <a class="sec" href="#catalogo">Catálogo</a>
+    <a class="sec" href="#licoes">O que aprendemos</a>
+    <button class="tgl" id="tgl" title="alternar tema">🌙</button>
+    <a class="btn ghost" href="https://github.com/inematds/musicaclone" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero">
+  <div class="glow"></div>
+  <div class="wrap">
+    <span class="chip">catálogo</span>
+    <h1>Todas as músicas, com o <span class="amb">prompt</span> e a medição de cada uma</h1>
+    <p class="lead">Sete músicas geradas no Suno via Kie. Para cada uma: o que ela é, o prompt de
+    estilo exato que foi enviado, os números medidos no áudio que saiu, e o player para ouvir.
+    A ideia é conseguir olhar lado a lado e entender <em>por que</em> uma agradou e outra não.</p>
+  </div>
+</header>
+
+<section id="tabela">
+  <div class="wrap">
+    <h2>Resumo</h2>
+    <p class="sub">Números da faixa 1 de cada música. <b>Dinâmica</b> é a diferença entre o trecho
+    mais baixo e o mais alto — quanto maior, mais a música respira. <b>Sustentadas</b> conta as
+    notas seguradas por mais de 0,35s. Passe o mouse nas métricas dos cards para ver o que cada
+    uma significa.</p>
+    <div class="tabwrap">
+      <table>
+        <thead><tr>
+          <th>música</th><th>bpm</th><th>dinâmica</th><th>sustentadas</th><th>vibrato</th><th>veredito</th>
+        </tr></thead>
+        <tbody>{{TABELA}}</tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="catalogo">
+  <div class="wrap">
+    <h2>Catálogo</h2>
+    <p class="sub">Cada geração devolve duas faixas do Suno com o mesmo prompt. Elas costumam sair
+    bem diferentes entre si — vale ouvir as duas antes de decidir.</p>
+    {{CARDS}}
+  </div>
+</section>
+
+<section id="licoes">
+  <div class="wrap">
+    <h2>O que aprendemos comparando</h2>
+    <p class="sub">Tudo abaixo saiu da comparação entre os prompts e as medições desta página.</p>
+    <div class="tabwrap" style="padding:20px">
+      <p><b class="amb">Intensidade constante achata.</b> As três primeiras músicas pediam
+      <code>screaming</code>, <code>desperate</code> e <code>raw aggressive</code> ao mesmo tempo,
+      sem nenhuma marcação de trecho calmo. Resultado: 16 dB de dinâmica e duas notas sustentadas
+      na música inteira. Soa grande e não emociona, porque nunca sai do teto.</p>
+      <p><b class="amb">Nomear o trecho calmo é a instrução mais eficiente.</b> Mais direta que
+      pedir "contraste dinâmico": <code>quiet piano intro</code> rendeu a melhor sustentação de
+      frase do lote, e <code>quiet intro</code> junto de <code>explosive final chorus</code>
+      rendeu o maior contraste, porque marca começo e fim.</p>
+      <p><b class="amb">Os negativos seguram o exagero.</b> Colocar
+      <code>constant screaming</code> e <code>flat dynamics</code> em negativeTags foi o que
+      impediu de repetir o erro das primeiras.</p>
+      <p><b class="amb">O modo cover herda o fraseado.</b> A versão em inglês foi feita como cover
+      da faixa em português, e por isso ficou presa num desenho rítmico pensado para o português.</p>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span class="pill">Suno via Kie</span><span class="pill">bash + jq</span>
+  <span class="pill">Gemini (análise)</span><span class="pill">numpy · scipy (medição)</span>
+  <p style="margin-top:1em">
+    <a href="https://github.com/inematds/musicaclone" target="_blank" rel="noopener">github.com/inematds/musicaclone</a>
+    · <a class="inema" style="color:var(--sky)" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+  </p>
+</div></footer>
+
+<script>
+  var b=document.body,t=document.getElementById('tgl');
+  if(localStorage.getItem('tema')==='light'){b.classList.add('light');t.textContent='☀️'}
+  t.onclick=function(){
+    b.classList.toggle('light');
+    var l=b.classList.contains('light');
+    t.textContent=l?'☀️':'🌙';
+    localStorage.setItem('tema',l?'light':'dark');
+  };
+  // um player por vez
+  document.addEventListener('play',function(e){
+    document.querySelectorAll('audio').forEach(function(a){if(a!==e.target)a.pause()});
+  },true);
+</script>
+</body>
+</html>

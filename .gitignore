@@ -1,3 +1,5 @@
 .env
 *.mp3
 spec.json
+docs/ref-clipe/
+!guia/audio/*.mp3

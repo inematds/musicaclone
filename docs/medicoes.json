@@ -1,0 +1,317 @@
+{
+ "a-roda": {
+  "titulo": "A Roda",
+  "style": "soulful gospel rock, raspy male lead, female harmony, full choir, hammond organ, handclaps, no falsetto, wide slow vibrato, quiet intro, explosive final chorus, extreme dynamic contrast, brazilian portuguese, 92bpm",
+  "negativos": "muffled, lo-fi, constant screaming, flat dynamics, autotune, falsetto",
+  "modo": "estilo",
+  "model": "V5",
+  "voz": "m",
+  "styleWeight": 0.7,
+  "faixas": {
+   "faixa-1": {
+    "dur": 133.2,
+    "dinamica_db": 29.6,
+    "brilho_hz": 2397,
+    "pct_voz": 20.2,
+    "f0_mediana": 386,
+    "registro": [
+     11.9,
+     20.7,
+     23.5,
+     40.5
+    ],
+    "sustentadas": 12,
+    "sust_max": 0.9,
+    "vibrato_hz": 6.8,
+    "vibrato_cents": 68
+   },
+   "faixa-2": {
+    "dur": 146.2,
+    "dinamica_db": 33.7,
+    "brilho_hz": 2797,
+    "pct_voz": 13.3,
+    "f0_mediana": 310,
+    "registro": [
+     6.0,
+     28.3,
+     40.2,
+     21.5
+    ],
+    "sustentadas": 6,
+    "sust_max": 1.2,
+    "vibrato_hz": 6.0,
+    "vibrato_cents": 643
+   }
+  }
+ },
+ "legado-pt": {
+  "titulo": "Se Paga",
+  "style": "epic cinematic pop, powerful female belt vocals, male spoken word responses, gang vocal choir, brazilian portuguese, orchestral war drums, soaring strings, anthemic, wide reverb, 118bpm, emotional build, huge chorus",
+  "negativos": "lo-fi, mumble, whisper-only, acoustic ballad, autotune heavy",
+  "modo": "estilo",
+  "model": "V5",
+  "voz": "f",
+  "styleWeight": 0.85,
+  "faixas": {
+   "faixa-1": {
+    "dur": 181.9,
+    "dinamica_db": 20.7,
+    "brilho_hz": 2685,
+    "pct_voz": 27.3,
+    "f0_mediana": 490,
+    "registro": [
+     1.0,
+     8.3,
+     27.6,
+     62.3
+    ],
+    "sustentadas": 29,
+    "sust_max": 2.9,
+    "vibrato_hz": 6.9,
+    "vibrato_cents": 112
+   },
+   "faixa-2": {
+    "dur": 172.3,
+    "dinamica_db": 23.3,
+    "brilho_hz": 2099,
+    "pct_voz": 27.2,
+    "f0_mediana": 441,
+    "registro": [
+     0.4,
+     0.2,
+     25.3,
+     69.1
+    ],
+    "sustentadas": 32,
+    "sust_max": 1.0,
+    "vibrato_hz": 6.8,
+    "vibrato_cents": 94
+   }
+  }
+ },
+ "luz-de-volta": {
+  "titulo": "Luz de Volta",
+  "style": "emotional rock anthem, male and female lead trading lines with zero gap, tight interlocking call and response, instant overlapping vocal handoff, vocals mixed loud and upfront above the band, dry close vocal, minimal double tracking, single tracked lead, straight tone with almost no vibrato, high belt range, raw honest delivery, quiet intimate intro, extreme dynamic contrast, driving guitars, live drums, brazilian portuguese, 82bpm",
+  "negativos": "heavy vocal doubling, stacked harmonies, choir pads, autotune, buried vocals, instrumental heavy mix, wide vibrato, flat dynamics, gap between vocal lines, constant screaming",
+  "modo": "estilo",
+  "model": "V5",
+  "voz": "f",
+  "styleWeight": 0.72,
+  "faixas": {
+   "faixa-1": {
+    "dur": 173.4,
+    "dinamica_db": 15.5,
+    "brilho_hz": 2467,
+    "pct_voz": 7.1,
+    "f0_mediana": 459,
+    "registro": [
+     19.5,
+     11.0,
+     11.9,
+     55.6
+    ],
+    "sustentadas": 3,
+    "sust_max": 0.5,
+    "vibrato_hz": 4.7,
+    "vibrato_cents": 787
+   },
+   "faixa-2": {
+    "dur": 124.0,
+    "dinamica_db": 9.8,
+    "brilho_hz": 2192,
+    "pct_voz": 13.0,
+    "f0_mediana": 247,
+    "registro": [
+     33.0,
+     21.4,
+     30.9,
+     13.2
+    ],
+    "sustentadas": 5,
+    "sust_max": 0.7,
+    "vibrato_hz": 7.1,
+    "vibrato_cents": 218
+   }
+  }
+ },
+ "nao-se-desiste": {
+  "titulo": "Não Se Desiste",
+  "style": "raw emotional male and female duet, gravelly baritone spoken responses, driven chest mix, no falsetto, wide slow vibrato, laid back phrasing, extreme dynamic contrast, quiet intimate verse, huge belted chorus, orchestral build, live raw take, brazilian portuguese, 76bpm",
+  "negativos": "muffled, lo-fi, constant screaming, flat dynamics, autotune, falsetto",
+  "modo": "estilo",
+  "model": "V5",
+  "voz": "f",
+  "styleWeight": 0.7,
+  "faixas": {
+   "faixa-1": {
+    "dur": 121.6,
+    "dinamica_db": 18.1,
+    "brilho_hz": 1990,
+    "pct_voz": 22.1,
+    "f0_mediana": 294,
+    "registro": [
+     35.0,
+     11.3,
+     31.4,
+     21.3
+    ],
+    "sustentadas": 13,
+    "sust_max": 0.7,
+    "vibrato_hz": 6.3,
+    "vibrato_cents": 70
+   },
+   "faixa-2": {
+    "dur": 153.0,
+    "dinamica_db": 22.0,
+    "brilho_hz": 2031,
+    "pct_voz": 23.7,
+    "f0_mediana": 490,
+    "registro": [
+     1.8,
+     2.7,
+     28.1,
+     64.7
+    ],
+    "sustentadas": 31,
+    "sust_max": 0.8,
+    "vibrato_hz": 7.0,
+    "vibrato_cents": 59
+   }
+  }
+ },
+ "o-centro": {
+  "titulo": "O Centro",
+  "style": "epic cinematic anthem, powerful female belt, deep male spoken word, gang vocal choir, no falsetto, wide slow vibrato, quiet piano intro, massive orchestral chorus, war drums, extreme dynamic contrast, brazilian portuguese, 84bpm",
+  "negativos": "muffled, lo-fi, constant screaming, flat dynamics, autotune, falsetto",
+  "modo": "estilo",
+  "model": "V5",
+  "voz": "f",
+  "styleWeight": 0.7,
+  "faixas": {
+   "faixa-1": {
+    "dur": 172.7,
+    "dinamica_db": 24.7,
+    "brilho_hz": 2083,
+    "pct_voz": 24.8,
+    "f0_mediana": 424,
+    "registro": [
+     10.9,
+     17.3,
+     24.7,
+     46.4
+    ],
+    "sustentadas": 28,
+    "sust_max": 2.0,
+    "vibrato_hz": 6.8,
+    "vibrato_cents": 31
+   },
+   "faixa-2": {
+    "dur": 165.0,
+    "dinamica_db": 27.9,
+    "brilho_hz": 2092,
+    "pct_voz": 23.7,
+    "f0_mediana": 400,
+    "registro": [
+     1.7,
+     25.7,
+     27.1,
+     44.8
+    ],
+    "sustentadas": 28,
+    "sust_max": 1.5,
+    "vibrato_hz": 6.0,
+    "vibrato_cents": 30
+   }
+  }
+ },
+ "se-paga-en": {
+  "titulo": "It's Paid",
+  "style": "epic cinematic anthem, screaming female belting, raspy desperate female vocals, deep cavernous male baritone, viking folk duet, fast vocal call and response, gang vocal choir, orchestral war drums, soaring strings, raw aggressive vocals, 118bpm, huge chorus, english lyrics",
+  "negativos": "",
+  "modo": "cover",
+  "model": "V5",
+  "voz": "f",
+  "styleWeight": 0.88,
+  "faixas": {
+   "faixa-1": {
+    "dur": 283.1,
+    "dinamica_db": 14.8,
+    "brilho_hz": 2291,
+    "pct_voz": 12.5,
+    "f0_mediana": 595,
+    "registro": [
+     10.5,
+     4.0,
+     7.6,
+     67.5
+    ],
+    "sustentadas": 5,
+    "sust_max": 0.5,
+    "vibrato_hz": 7.9,
+    "vibrato_cents": 82
+   },
+   "faixa-2": {
+    "dur": 287.6,
+    "dinamica_db": 16.5,
+    "brilho_hz": 2262,
+    "pct_voz": 11.5,
+    "f0_mediana": 551,
+    "registro": [
+     7.6,
+     5.6,
+     14.6,
+     62.3
+    ],
+    "sustentadas": 7,
+    "sust_max": 0.7,
+    "vibrato_hz": 5.7,
+    "vibrato_cents": 67
+   }
+  }
+ },
+ "se-paga-pt": {
+  "titulo": "Se Paga",
+  "style": "epic cinematic anthem, screaming female belting, raspy desperate female vocals, deep cavernous male baritone, viking folk duet, fast vocal call and response, gang vocal choir, orchestral war drums, soaring strings, raw aggressive vocals, 118bpm, huge chorus, brazilian portuguese",
+  "negativos": "",
+  "modo": "estilo",
+  "model": "V5",
+  "voz": "f",
+  "styleWeight": 0.88,
+  "faixas": {
+   "faixa-1": {
+    "dur": 248.8,
+    "dinamica_db": 16.3,
+    "brilho_hz": 2517,
+    "pct_voz": 11.0,
+    "f0_mediana": 612,
+    "registro": [
+     3.2,
+     1.4,
+     7.1,
+     77.2
+    ],
+    "sustentadas": 5,
+    "sust_max": 0.9,
+    "vibrato_hz": 6.6,
+    "vibrato_cents": 26
+   },
+   "faixa-2": {
+    "dur": 237.3,
+    "dinamica_db": 16.4,
+    "brilho_hz": 2567,
+    "pct_voz": 6.2,
+    "f0_mediana": 630,
+    "registro": [
+     6.4,
+     7.1,
+     6.4,
+     59.3
+    ],
+    "sustentadas": 2,
+    "sust_max": 0.7,
+    "vibrato_hz": 0,
+    "vibrato_cents": 0
+   }
+  }
+ }
+}
