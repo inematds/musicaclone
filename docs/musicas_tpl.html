@@ -96,6 +96,10 @@
   .mlab span{text-transform:none;letter-spacing:0;opacity:.7}
   .semmov{font-size:.78rem;color:var(--mut);padding:.8em 0}
   .mov .ph{stroke:#f87171;stroke-width:2}
+  .spec{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);margin:.3em 0}
+  .wave{width:100%;height:auto;display:block;border-radius:6px;margin:.3em 0}
+  .roll{width:100%;height:auto;display:block;margin:.3em 0;color:var(--txt)}
+  .roll .hlab{font:8px "JetBrains Mono",monospace;fill:var(--mut)}
   .hist,.dlg{width:100%;height:auto;display:block;margin:.3em 0 .2em}
   .hist .hlab,.dlg .hlab{font:8px "JetBrains Mono",monospace;fill:var(--mut)}
   .video{margin-top:14px;font-size:.88rem;color:var(--mut);border-top:1px dashed var(--line);padding-top:12px}
@@ -188,6 +192,13 @@
     <h2>Catálogo</h2>
     <p class="sub">Cada geração devolve duas faixas do Suno com o mesmo prompt. Elas costumam sair
     bem diferentes entre si — vale ouvir as duas antes de decidir.</p>
+    <p class="sub"><b class="amb">Os seis gráficos de cada faixa:</b>
+    o <b>espectrograma</b> é o mapa do som — tempo na horizontal, frequência na vertical (grave
+    embaixo, agudo em cima) e cor pelo volume; é nele que aparecem os harmônicos da voz, o vibrato
+    e as linhas de melodia. A <b>forma de onda</b> mostra só o volume, útil para achar refrão e
+    verso. O <b>piano roll</b> traduz o canto em blocos na altura de cada tecla, mostrando a nota
+    exata. O <b>movimento</b> é a linha da altura com o volume atrás. O <b>diálogo</b> mostra as
+    frases e o silêncio entre as vozes. E o <b>histograma</b> mostra quais notas a voz usa.</p>
     <p class="sub"><b class="amb">Como ler o gráfico de movimento:</b> a linha âmbar é a altura da
     voz ao longo da música — subiu no gráfico, subiu de nota. Os cortes na linha são onde não há
     canto (instrumental, respiro). A linha cinza fina atrás é o volume. As notas nas pontas

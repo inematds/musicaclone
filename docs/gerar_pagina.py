@@ -156,6 +156,49 @@ def dialogo(m):
     return "".join(s)
 
 
+
+ROLL = json.load(open(os.path.join(R, "docs", "pianoroll.json"))) if os.path.exists(
+    os.path.join(R, "docs", "pianoroll.json")) else {}
+
+
+def piano(chave):
+    """Piano roll: cada nota cantada vira um bloco na altura da tecla."""
+    ns = ROLL.get(chave) or []
+    if len(ns) < 4:
+        return ""
+    W, H = 300, 110
+    lo = min(n[2] for n in ns); hi = max(n[2] for n in ns)
+    if hi - lo < 6:
+        lo, hi = lo - 3, hi + 3
+    t1 = max(n[1] for n in ns) or 1
+    alt = (H - 14) / (hi - lo + 1)
+    s = [f'<svg viewBox="0 0 {W} {H}" class="roll" role="img" aria-label="piano roll">']
+    # faixas das teclas pretas, para dar a leitura de teclado
+    for m in range(lo, hi + 1):
+        if m % 12 in (1, 3, 6, 8, 10):
+            y = 6 + (hi - m) * alt
+            s.append(f'<rect x="0" y="{y:.1f}" width="{W}" height="{alt:.1f}" fill="currentColor" opacity=".06"/>')
+    for a, b, m in ns:
+        x = a / t1 * W
+        w = max(1.4, (b - a) / t1 * W)
+        y = 6 + (hi - m) * alt
+        s.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{max(2,alt-1):.1f}" rx="1.5" fill="#E2A23B"><title>{nota(m)}</title></rect>')
+    s.append(f'<text x="2" y="{H-2}" class="hlab">{nota(lo)} a {nota(hi)} · {len(ns)} notas</text>')
+    s.append("</svg>")
+    return "".join(s)
+
+
+def espectro(chave):
+    sp = f"espectro/{chave}-spec.png"
+    wf = f"espectro/{chave}-wave.png"
+    if not os.path.exists(os.path.join(R, "guia", sp)):
+        return ""
+    return (f'<div class="mlab">espectrograma <span>(grave embaixo, agudo em cima; cor = volume)</span></div>'
+            f'<img class="spec" src="{sp}" alt="espectrograma" loading="lazy">'
+            f'<div class="mlab">forma de onda <span>(so o volume)</span></div>'
+            f'<img class="wave" src="{wf}" alt="forma de onda" loading="lazy">')
+
+
 def metrica(rot, val, dica=""):
     t = f' title="{html.escape(dica)}"' if dica else ""
     return f'<div class="met"{t}><b>{val}</b><span>{rot}</span></div>'
@@ -185,6 +228,9 @@ for slug in SEL:
         </div>
         <div class="mlab">movimento da voz <b>· tom {m.get("tom","?")}</b> <span>(confianca {m.get("tom_conf",0)})</span></div>
         {movimento(m)}
+        {espectro(f"{slug}-{nome}")}
+        <div class="mlab">piano roll <span>(cada bloco = uma nota cantada)</span></div>
+        {piano(f"{slug}-{nome}")}
         <div class="mlab">dialogo entre as vozes <span>(azul = troca de registro)</span></div>
         {dialogo(m)}
         <div class="mlab">notas usadas <span>(ambar = tonica)</span></div>
@@ -303,6 +349,9 @@ for slug, a in AC.items():
         </div>
         <div class="mlab">movimento da voz <b>· tom {m.get("tom","?")}</b> <span>(confianca {m.get("tom_conf",0)})</span></div>
         {movimento(m)}
+        {espectro(fn)}
+        <div class="mlab">piano roll <span>(cada bloco = uma nota cantada)</span></div>
+        {piano(fn)}
         <div class="mlab">dialogo entre as vozes <span>(azul = troca de registro)</span></div>
         {dialogo(m)}
         <div class="mlab">notas usadas <span>(ambar = tonica)</span></div>
