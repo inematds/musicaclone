@@ -275,6 +275,25 @@ for slug, a in AC.items():
     if any(f in REFS for f in a["faixas"]):
         menu.append(f'<a class="mi" href="#{slug}"><img src="capas/{a["capa"]}.png" alt="" loading="lazy"><span>{html.escape(a["titulo"])}</span></a>')
 
+
+# acervo tambem na tabela do topo
+for slug, a in AC.items():
+    m = None
+    for fn in a["faixas"]:
+        if fn in REFS:
+            m = REFS[fn]; break
+    if not m:
+        continue
+    linhas.append(f'''<tr>
+      <td><a href="#{slug}">{html.escape(a["titulo"])}</a></td>
+      <td class="num">—</td>
+      <td class="num">{m.get("tom","?")}</td>
+      <td class="num">{m["dinamica_db"]} dB</td>
+      <td class="num">{m["sustentadas"]}</td>
+      <td class="num">{vib(m)}</td>
+      <td><span class="badge sm" style="--bc:#94a3b8">acervo</span></td>
+    </tr>''')
+
 # --------------------------------------------------- grafico de dispersao
 pts = []
 for slug in SEL:
