@@ -54,6 +54,56 @@ def barras(reg):
     return "".join(s)
 
 
+NOTAS = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+
+
+def nota(midi):
+    i = int(round(midi))
+    return f"{NOTAS[i % 12]}{i // 12 - 1}"
+
+
+def movimento(m):
+    """Contorno de altura da voz + envelope de volume ao longo do tempo."""
+    cont = m.get("contorno") or []
+    ener = m.get("energia") or []
+    vals = [c for c in cont if c is not None]
+    if len(vals) < 8:
+        return '<div class="semmov">sem canto continuo suficiente para tracar o movimento</div>'
+    W, H, top, bot = 300, 96, 8, 20
+    lo, hi = min(vals), max(vals)
+    if hi - lo < 4:
+        lo, hi = lo - 2, hi + 2
+    n = len(cont)
+    px = lambda i: i * W / max(n - 1, 1)
+    py = lambda v: top + (H - top - bot) * (1 - (v - lo) / (hi - lo))
+
+    s = [f'<svg viewBox="0 0 {W} {H}" class="mov" role="img" aria-label="movimento da voz">']
+    # envelope de volume ao fundo
+    if ener:
+        emin, emax = min(ener), max(ener)
+        rng = (emax - emin) or 1
+        pts = " ".join(f"{px(i):.1f},{top + (H-top-bot) * (1 - (e-emin)/rng):.1f}"
+                       for i, e in enumerate(ener[:n]))
+        s.append(f'<polyline points="{pts}" class="env"/>')
+    # contorno da voz, quebrando onde nao ha canto
+    seg = []
+    for i, c in enumerate(cont):
+        if c is None:
+            if len(seg) > 1:
+                s.append(f'<polyline points="{" ".join(seg)}" class="line"/>')
+            seg = []
+        else:
+            seg.append(f"{px(i):.1f},{py(c):.1f}")
+    if len(seg) > 1:
+        s.append(f'<polyline points="{" ".join(seg)}" class="line"/>')
+    s.append(f'<text x="2" y="{top+6}" class="nlab">{nota(hi)}</text>')
+    s.append(f'<text x="2" y="{H-bot:.0f}" class="nlab">{nota(lo)}</text>')
+    s.append(f'<text x="{W-2}" y="{H-4}" class="nlab" text-anchor="end">tempo &rarr;</text>')
+    s.append(f'<text x="2" y="{H-4}" class="nlab">extensao {hi-lo:.0f} semitons</text>')
+    s.append("</svg>")
+    return "".join(s)
+
+
 def metrica(rot, val, dica=""):
     t = f' title="{html.escape(dica)}"' if dica else ""
     return f'<div class="met"{t}><b>{val}</b><span>{rot}</span></div>'
@@ -81,6 +131,9 @@ for slug in SEL:
           {metrica("vibrato", vib(m), "profundidade do vibrato; acima de 200 cents e falha de deteccao")}
           {metrica("brilho", f"{m['brilho_hz']} Hz", "centroide espectral cantando — mais alto soa mais rasgado")}
         </div>
+        <div class="mlab">movimento da voz <b>· tom {m.get("tom","?")}</b> <span>(confianca {m.get("tom_conf",0)})</span></div>
+        {movimento(m)}
+        <div class="mlab">onde a voz passa o tempo</div>
         {barras(m["registro"])}
       </div>''')
     cards.append(f'''
@@ -117,6 +170,7 @@ for slug in SEL:
     linhas.append(f'''<tr>
       <td><a href="#{slug}">{html.escape(titulo)}</a></td>
       <td class="num">{bpm or "—"}</td>
+      <td class="num">{f1.get("tom","?")}</td>
       <td class="num">{f1["dinamica_db"]} dB</td>
       <td class="num">{f1["sustentadas"]}</td>
       <td class="num">{vib(f1)}</td>

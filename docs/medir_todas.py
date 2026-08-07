@@ -78,6 +78,43 @@ def medir(src):
     r["sust_max"] = round(max(sust), 1) if sust else 0
     r["vibrato_hz"] = round(float(np.median(vr)), 1) if vr else 0
     r["vibrato_cents"] = int(np.median(vd)) if vd else 0
+
+    # ---- MOVIMENTO: contorno de altura e envelope de volume ao longo do tempo
+    N = 240
+    passo = max(1, nfr // N)
+    cont, ener = [], []
+    for i in range(0, nfr - passo + 1, passo):
+        j = slice(i, i + passo)
+        f = f0[j][voz[j]]
+        # nota MIDI mediana da janela (None quando nao ha canto)
+        cont.append(round(float(np.median(12 * np.log2(f / 440.0) + 69)), 1) if len(f) else None)
+        ener.append(round(float(np.median(db[j])), 1))
+    r["contorno"] = cont[:N]
+    r["energia"] = ener[:N]
+
+    # ---- TOM: correlacao do perfil de croma com os perfis maior/menor
+    FRc, HOPc = 4096, 2048
+    fq = np.fft.rfftfreq(FRc, 1 / sr); fq[0] = 1
+    pc = np.mod(np.round(12 * np.log2(fq / 440.0) + 69).astype(int), 12)
+    banda = (fq > 80) & (fq < 2000)
+    croma = np.zeros(12)
+    wn = np.hanning(FRc)
+    for i in range(0, len(x) - FRc, HOPc):
+        S = np.abs(np.fft.rfft(x[i:i + FRc] * wn))
+        for p in range(12):
+            croma[p] += S[banda & (pc == p)].sum()
+    croma = croma / (croma.sum() + 1e-9)
+    MAJ = np.array([6.35,2.23,3.48,2.33,4.38,4.09,2.52,5.19,2.39,3.66,2.29,2.88])
+    MEN = np.array([6.33,2.68,3.52,5.38,2.60,3.53,2.54,4.75,3.98,2.69,3.34,3.17])
+    nomes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
+    melhor, tom = -9, "?"
+    for i in range(12):
+        for perfil, suf in ((MAJ, "maior"), (MEN, "menor")):
+            v = np.corrcoef(np.roll(croma, -i), perfil)[0, 1]
+            if v > melhor:
+                melhor, tom = v, f"{nomes[i]} {suf}"
+    r["tom"] = tom
+    r["tom_conf"] = round(float(melhor), 2)
     return r
 
 

@@ -87,6 +87,14 @@
   .chart{width:100%;height:auto;display:block;margin-top:.4em}
   .chart .cval{font:600 10px Sora;fill:var(--mut);text-anchor:middle}
   .chart .clab{font:10px Inter;fill:var(--mut);text-anchor:middle}
+  .mov{width:100%;height:auto;display:block;margin:.3em 0 .2em}
+  .mov .line{fill:none;stroke:var(--amb);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+  .mov .env{fill:none;stroke:var(--mut);stroke-width:1;opacity:.42}
+  .mov .nlab{font:9px "JetBrains Mono",monospace;fill:var(--mut)}
+  .mlab{font-family:Sora;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-top:.9em}
+  .mlab b{color:var(--amb);text-transform:none;letter-spacing:0}
+  .mlab span{text-transform:none;letter-spacing:0;opacity:.7}
+  .semmov{font-size:.78rem;color:var(--mut);padding:.8em 0}
   .video{margin-top:14px;font-size:.88rem;color:var(--mut);border-top:1px dashed var(--line);padding-top:12px}
   .video span{font-family:Sora;color:var(--txt)}
 
@@ -145,7 +153,7 @@
     <div class="tabwrap">
       <table>
         <thead><tr>
-          <th>música</th><th>bpm</th><th>dinâmica</th><th>sustentadas</th><th>vibrato</th><th>veredito</th>
+          <th>música</th><th>bpm</th><th>tom</th><th>dinâmica</th><th>sustentadas</th><th>vibrato</th><th>veredito</th>
         </tr></thead>
         <tbody>{{TABELA}}</tbody>
       </table>
@@ -158,6 +166,12 @@
     <h2>Catálogo</h2>
     <p class="sub">Cada geração devolve duas faixas do Suno com o mesmo prompt. Elas costumam sair
     bem diferentes entre si — vale ouvir as duas antes de decidir.</p>
+    <p class="sub"><b class="amb">Como ler o gráfico de movimento:</b> a linha âmbar é a altura da
+    voz ao longo da música — subiu no gráfico, subiu de nota. Os cortes na linha são onde não há
+    canto (instrumental, respiro). A linha cinza fina atrás é o volume. As notas nas pontas
+    esquerdas marcam a nota mais grave e a mais aguda que a voz alcança, e a extensão em semitons
+    diz o tamanho do salto entre elas. <b>Linha que sobe e desce</b> é música que se move;
+    <b>linha achatada no topo</b> é a música que mora no grito e cansa.</p>
     {{CARDS}}
   </div>
 </section>
