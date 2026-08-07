@@ -123,8 +123,88 @@ for slug in SEL:
       <td><span class="badge sm" style="--bc:{cor}">{rot}</span></td>
     </tr>''')
 
+# ---------------------------------------------------------------- referencias
+# So MEDICOES. Audio de referencia nao vai pro site: parte e gravacao de
+# terceiros (as duas do YouTube), e nao e nosso para publicar.
+RP = os.path.join(R, "docs", "medicoes-refs.json")
+REFS = json.load(open(RP)) if os.path.exists(RP) else {}
+RNOME = {
+ "tears-v3a": ("tears-v3a", "a referencia do rock emocional: respira, sobe sem morar no grito, voz reta e tensa"),
+ "tears-v3b": ("tears-v3b", "irma da anterior, mais tempo em belt e sustentacoes mais longas"),
+ "wewerehere-v2a": ("wewerehere-v2a", "a mais 'segurada' de todo o acervo gerado: 44 notas sustentadas"),
+ "wewerehere-v2b": ("wewerehere-v2b", "mesma familia, mais aguda"),
+ "fire-v1a": ("fire-v1a", "mais grave e espalhada pelos registros"),
+ "fire-v1b": ("fire-v1b", "idem, com menos sustentacao"),
+ "suno-horizons-v1-chops": ("suno-horizons-v1", "89% do tempo em belt: quase nao sai do teto"),
+ "suno-horizons-v2-chops": ("suno-horizons-v2", "boa dinamica, sustentacao curta"),
+ "suno-digital-sky-v1": ("suno-digital-sky-v1", "mora no agudo, dinamica media"),
+ "suno-digital-sky-v2": ("suno-digital-sky-v2", "dinamica baixa"),
+ "suno-builders-v1-vocal": ("suno-builders-v1", "dinamica baixa e quase nenhuma sustentacao"),
+ "suno-builders-v2-vocal": ("suno-builders-v2", "ZERO notas sustentadas: a voz nunca para"),
+ "suno-cover-isolado-v1": ("suno-cover-isolado-v1", "ZERO sustentadas, 78% em belt"),
+ "suno-cover-isolado-v2": ("suno-cover-isolado-v2", "a menor dinamica do acervo"),
+ "suno-cover-reel-v1": ("suno-cover-reel-v1", "dinamica alta, sustentacao quase nula"),
+ "suno-cover-reel-v2": ("suno-cover-reel-v2", "vibrato largo, pouca dinamica"),
+ "yt-agt-video2-standby": ("humano ao vivo (AGT)", "VOZ HUMANA REAL: 182 sustentadas e 41 dB — nenhuma gerada chega perto"),
+ "yt-agt-video1": ("humano, captacao suja (AGT)", "mesma origem, gravacao contaminada por banda e plateia"),
+}
+rlin = []
+for k in ["tears-v3a", "tears-v3b", "wewerehere-v2a", "wewerehere-v2b", "fire-v1a", "fire-v1b",
+          "suno-horizons-v1-chops", "suno-horizons-v2-chops", "suno-digital-sky-v1",
+          "suno-digital-sky-v2", "suno-builders-v1-vocal", "suno-builders-v2-vocal",
+          "suno-cover-isolado-v1", "suno-cover-isolado-v2", "suno-cover-reel-v1",
+          "suno-cover-reel-v2", "yt-agt-video2-standby", "yt-agt-video1"]:
+    if k not in REFS:
+        continue
+    m = REFS[k]; nome, obs = RNOME[k]
+    hum = "hum" if k.startswith("yt-") else ""
+    rlin.append(f'''<tr class="{hum}">
+      <td><b>{html.escape(nome)}</b><div class="robs">{html.escape(obs)}</div></td>
+      <td class="num">{m["f0_mediana"]} Hz</td>
+      <td class="num">{m["dinamica_db"]} dB</td>
+      <td class="num">{m["sustentadas"]}</td>
+      <td class="num">{m["sust_max"]}s</td>
+      <td class="num">{vib(m)}</td>
+      <td class="num">{m["registro"][3]:.0f}%</td>
+    </tr>''')
+
+# --------------------------------------------------- grafico de dispersao
+pts = []
+for slug in SEL:
+    if slug in D:
+        m = D[slug]["faixas"].get("faixa-1") or list(D[slug]["faixas"].values())[0]
+        pts.append((m["dinamica_db"], m["sustentadas"], INFO[slug][0], "g"))
+for k, m in REFS.items():
+    if k in RNOME:
+        pts.append((m["dinamica_db"], m["sustentadas"], RNOME[k][0], "h" if k.startswith("yt-") else "r"))
+
+W, H, pad = 640, 340, 46
+mxx = max(p[0] for p in pts) * 1.08
+mxy = max(p[1] for p in pts) * 1.12
+COR = {"g": "#E2A23B", "r": "#64748b", "h": "#38bdf8"}
+sc = [f'<svg viewBox="0 0 {W} {H}" class="scatter" role="img" aria-label="dinamica versus notas sustentadas">']
+for i in range(5):
+    y = pad + (H - pad * 2) * i / 4
+    sc.append(f'<line x1="{pad}" y1="{y:.0f}" x2="{W-14}" y2="{y:.0f}" class="grid"/>')
+    sc.append(f'<text x="{pad-8}" y="{y+4:.0f}" class="ax" text-anchor="end">{mxy*(1-i/4):.0f}</text>')
+for i in range(5):
+    x = pad + (W - pad - 14) * i / 4
+    sc.append(f'<text x="{x:.0f}" y="{H-10}" class="ax" text-anchor="middle">{mxx*i/4:.0f} dB</text>')
+for dx, sy, nome, tipo in pts:
+    X = pad + (W - pad - 14) * (dx / mxx)
+    Y = pad + (H - pad * 2) * (1 - sy / mxy)
+    rr = 8 if tipo == "h" else 5
+    sc.append(f'<circle cx="{X:.0f}" cy="{Y:.0f}" r="{rr}" fill="{COR[tipo]}" opacity=".9"><title>{html.escape(nome)}: {dx} dB, {sy} sustentadas</title></circle>')
+    if tipo == "h" or nome in ("tears-v3a", "Luz de Volta", "A Roda", "Se Paga (PT)", "wewerehere-v2a"):
+        sc.append(f'<text x="{X+11:.0f}" y="{Y+4:.0f}" class="pt">{html.escape(nome)}</text>')
+sc.append(f'<text x="{pad}" y="22" class="ax">notas sustentadas (eixo vertical) x dinamica (eixo horizontal)</text>')
+sc.append("</svg>")
+
 TPL = open(os.path.join(R, "docs", "musicas_tpl.html")).read()
-out = TPL.replace("{{TABELA}}", "".join(linhas)).replace("{{CARDS}}", "".join(cards))
+out = (TPL.replace("{{TABELA}}", "".join(linhas))
+          .replace("{{CARDS}}", "".join(cards))
+          .replace("{{REFS}}", "".join(rlin))
+          .replace("{{SCATTER}}", "".join(sc)))
 p = os.path.join(R, "guia", "musicas.html")
 open(p, "w").write(out)
 print("gerado:", p, f"({len(out)//1024} KB, {len(cards)} musicas)")

@@ -90,6 +90,14 @@
   .video{margin-top:14px;font-size:.88rem;color:var(--mut);border-top:1px dashed var(--line);padding-top:12px}
   .video span{font-family:Sora;color:var(--txt)}
 
+  .robs{font-size:.78rem;color:var(--mut);margin-top:.25em;max-width:46ch}
+  tr.hum td{background:color-mix(in srgb,var(--sky) 9%,transparent)}
+  .scatter{width:100%;height:auto;display:block}
+  .scatter .grid{stroke:var(--line);stroke-width:1}
+  .scatter .ax{font:10px Inter;fill:var(--mut)}
+  .scatter .pt{font:600 10px Sora;fill:var(--txt)}
+  .leg{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:.82rem;color:var(--mut)}
+  .leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
   footer{padding:40px 0;color:var(--mut);font-size:.9rem}
   footer .pill{display:inline-block;background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:.3em .8em;margin:0 6px 6px 0;font-size:.8rem}
 </style>
@@ -108,6 +116,8 @@
     <a class="sec" href="index.html">Guia</a>
     <a class="sec" href="#tabela">Tabela</a>
     <a class="sec" href="#catalogo">Catálogo</a>
+    <a class="sec" href="#referencias">Referências</a>
+    <a class="sec" href="#grafico">Gráfico</a>
     <a class="sec" href="#licoes">O que aprendemos</a>
     <button class="tgl" id="tgl" title="alternar tema">🌙</button>
     <a class="btn ghost" href="https://github.com/inematds/musicaclone" target="_blank" rel="noopener">GitHub</a>
@@ -149,6 +159,53 @@
     <p class="sub">Cada geração devolve duas faixas do Suno com o mesmo prompt. Elas costumam sair
     bem diferentes entre si — vale ouvir as duas antes de decidir.</p>
     {{CARDS}}
+  </div>
+</section>
+
+
+<section id="referencias">
+  <div class="wrap">
+    <h2>As referências, medidas</h2>
+    <p class="sub">O acervo de referência do seu computador, passado pela mesma régua. <b>Não há
+    player aqui de propósito</b>: parte destas gravações é de terceiros e não é nossa para publicar.
+    O que interessa são os números — é neles que dá para ver por que uma soa desesperada e outra
+    soa amadora.</p>
+    <div class="tabwrap">
+      <table>
+        <thead><tr>
+          <th>referência</th><th>f0 mediana</th><th>dinâmica</th><th>sustentadas</th>
+          <th>mais longa</th><th>vibrato</th><th>% belt</th>
+        </tr></thead>
+        <tbody>{{REFS}}</tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:1.6em"><b class="amb">f0 mediana</b> mostra onde a voz mora.
+    Repare que quase toda saída do Suno se aglomera entre 469 e 595 Hz, uma região alta e genérica,
+    enquanto as duas vozes humanas ficam perto de 290 Hz — quase uma oitava abaixo.
+    <b class="amb">% belt</b> diz se a música vive no grito: acima de 75% não sobra região média,
+    e sem região média não há de onde subir. <b>f0 mediana não determina o sexo de quem canta</b> —
+    homem em belt alto e mulher em região média se cruzam nessa faixa.</p>
+  </div>
+</section>
+
+<section id="grafico">
+  <div class="wrap">
+    <h2>O gráfico que resume tudo</h2>
+    <p class="sub">Cada bolinha é uma faixa. Quanto mais à <b>direita</b>, mais a música respira
+    (dinâmica). Quanto mais para <b>cima</b>, mais a voz segura as notas. O canto superior direito
+    é onde mora a música que emociona. Passe o mouse para ver o nome e os números.</p>
+    <div class="tabwrap" style="padding:18px">
+      {{SCATTER}}
+      <div class="leg">
+        <span><i style="background:#E2A23B"></i> nossas músicas</span>
+        <span><i style="background:#64748b"></i> referências geradas</span>
+        <span><i style="background:#38bdf8"></i> voz humana real</span>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:1.6em"><b class="amb">A voz humana está sozinha lá em cima.</b>
+    182 notas sustentadas e 41 dB. A melhor coisa que o Suno produziu em todo o acervo tem 44
+    sustentadas. Não é questão de timbre: é que a voz humana segura frase e varia volume de um jeito
+    que o modelo raramente faz. Esse é o teto real com que estamos lidando.</p>
   </div>
 </section>
 

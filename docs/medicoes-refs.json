@@ -1,0 +1,376 @@
+{
+ "fire-v1a": {
+  "dur": 252.6,
+  "dinamica_db": 22.1,
+  "brilho_hz": 2386,
+  "pct_voz": 15.2,
+  "f0_mediana": 386,
+  "registro": [
+   30.5,
+   7.9,
+   32.7,
+   17.7
+  ],
+  "sustentadas": 16,
+  "sust_max": 0.7,
+  "vibrato_hz": 6.4,
+  "vibrato_cents": 198
+ },
+ "fire-v1b": {
+  "dur": 208.5,
+  "dinamica_db": 23.8,
+  "brilho_hz": 2358,
+  "pct_voz": 10.1,
+  "f0_mediana": 393,
+  "registro": [
+   24.2,
+   10.4,
+   29.5,
+   31.2
+  ],
+  "sustentadas": 4,
+  "sust_max": 0.6,
+  "vibrato_hz": 5.1,
+  "vibrato_cents": 219
+ },
+ "reel-fb-vocal": {
+  "dur": 49.4,
+  "dinamica_db": 41.9,
+  "brilho_hz": 1235,
+  "pct_voz": 44.5,
+  "f0_mediana": 198,
+  "registro": [
+   0.1,
+   94.9,
+   4.8,
+   0.3
+  ],
+  "sustentadas": 7,
+  "sust_max": 0.9,
+  "vibrato_hz": 4.4,
+  "vibrato_cents": 37
+ },
+ "suno-builders-v1-vocal": {
+  "dur": 196.2,
+  "dinamica_db": 13.7,
+  "brilho_hz": 2234,
+  "pct_voz": 13.5,
+  "f0_mediana": 469,
+  "registro": [
+   5.6,
+   2.6,
+   25.9,
+   57.9
+  ],
+  "sustentadas": 2,
+  "sust_max": 0.4,
+  "vibrato_hz": 8.3,
+  "vibrato_cents": 43
+ },
+ "suno-builders-v2-vocal": {
+  "dur": 169.1,
+  "dinamica_db": 15.1,
+  "brilho_hz": 2377,
+  "pct_voz": 14.4,
+  "f0_mediana": 525,
+  "registro": [
+   4.3,
+   0.5,
+   21.0,
+   52.3
+  ],
+  "sustentadas": 0,
+  "sust_max": 0,
+  "vibrato_hz": 0,
+  "vibrato_cents": 0
+ },
+ "suno-cover-isolado-v1": {
+  "dur": 184.0,
+  "dinamica_db": 14.8,
+  "brilho_hz": 2501,
+  "pct_voz": 9.3,
+  "f0_mediana": 512,
+  "registro": [
+   3.3,
+   5.2,
+   11.6,
+   78.4
+  ],
+  "sustentadas": 0,
+  "sust_max": 0,
+  "vibrato_hz": 0,
+  "vibrato_cents": 0
+ },
+ "suno-cover-isolado-v2": {
+  "dur": 215.1,
+  "dinamica_db": 10.8,
+  "brilho_hz": 2127,
+  "pct_voz": 17.1,
+  "f0_mediana": 525,
+  "registro": [
+   2.7,
+   3.9,
+   12.7,
+   79.9
+  ],
+  "sustentadas": 16,
+  "sust_max": 1.3,
+  "vibrato_hz": 7.2,
+  "vibrato_cents": 32
+ },
+ "suno-cover-reel-v1": {
+  "dur": 134.9,
+  "dinamica_db": 28.2,
+  "brilho_hz": 2183,
+  "pct_voz": 11.9,
+  "f0_mediana": 432,
+  "registro": [
+   1.6,
+   3.2,
+   45.5,
+   47.2
+  ],
+  "sustentadas": 2,
+  "sust_max": 0.4,
+  "vibrato_hz": 7.8,
+  "vibrato_cents": 350
+ },
+ "suno-cover-reel-v2": {
+  "dur": 172.5,
+  "dinamica_db": 15.1,
+  "brilho_hz": 2380,
+  "pct_voz": 18.4,
+  "f0_mediana": 525,
+  "registro": [
+   0.8,
+   3.2,
+   11.7,
+   78.0
+  ],
+  "sustentadas": 12,
+  "sust_max": 0.6,
+  "vibrato_hz": 7.5,
+  "vibrato_cents": 90
+ },
+ "suno-digital-sky-v1": {
+  "dur": 201.2,
+  "dinamica_db": 17.1,
+  "brilho_hz": 1940,
+  "pct_voz": 18.1,
+  "f0_mediana": 525,
+  "registro": [
+   0.1,
+   3.9,
+   14.9,
+   78.4
+  ],
+  "sustentadas": 5,
+  "sust_max": 1.3,
+  "vibrato_hz": 5.8,
+  "vibrato_cents": 47
+ },
+ "suno-digital-sky-v2": {
+  "dur": 208.4,
+  "dinamica_db": 13.8,
+  "brilho_hz": 2517,
+  "pct_voz": 20.6,
+  "f0_mediana": 525,
+  "registro": [
+   2.6,
+   5.4,
+   32.3,
+   57.6
+  ],
+  "sustentadas": 13,
+  "sust_max": 0.9,
+  "vibrato_hz": 7.3,
+  "vibrato_cents": 31
+ },
+ "suno-horizons-v1-chops": {
+  "dur": 139.0,
+  "dinamica_db": 17.3,
+  "brilho_hz": 1278,
+  "pct_voz": 23.2,
+  "f0_mediana": 580,
+  "registro": [
+   8.9,
+   1.2,
+   0.5,
+   88.7
+  ],
+  "sustentadas": 11,
+  "sust_max": 3.6,
+  "vibrato_hz": 6.6,
+  "vibrato_cents": 66
+ },
+ "suno-horizons-v2-chops": {
+  "dur": 186.3,
+  "dinamica_db": 23.1,
+  "brilho_hz": 2228,
+  "pct_voz": 21.2,
+  "f0_mediana": 595,
+  "registro": [
+   0.3,
+   1.9,
+   9.7,
+   79.0
+  ],
+  "sustentadas": 7,
+  "sust_max": 0.5,
+  "vibrato_hz": 7.6,
+  "vibrato_cents": 41
+ },
+ "tears-v3a": {
+  "dur": 148.6,
+  "dinamica_db": 24.1,
+  "brilho_hz": 2203,
+  "pct_voz": 18.3,
+  "f0_mediana": 469,
+  "registro": [
+   9.6,
+   1.8,
+   25.3,
+   60.2
+  ],
+  "sustentadas": 16,
+  "sust_max": 1.3,
+  "vibrato_hz": 7.4,
+  "vibrato_cents": 17
+ },
+ "tears-v3b": {
+  "dur": 207.2,
+  "dinamica_db": 20.9,
+  "brilho_hz": 2447,
+  "pct_voz": 14.9,
+  "f0_mediana": 469,
+  "registro": [
+   0.9,
+   6.5,
+   13.4,
+   72.2
+  ],
+  "sustentadas": 11,
+  "sust_max": 2.9,
+  "vibrato_hz": 5.2,
+  "vibrato_cents": 34
+ },
+ "tiktok-audio": {
+  "dur": 153.7,
+  "dinamica_db": 59.1,
+  "brilho_hz": 1746,
+  "pct_voz": 34.2,
+  "f0_mediana": 227,
+  "registro": [
+   2.6,
+   73.3,
+   21.7,
+   2.3
+  ],
+  "sustentadas": 28,
+  "sust_max": 0.7,
+  "vibrato_hz": 5.7,
+  "vibrato_cents": 83
+ },
+ "wewerehere-v2a": {
+  "dur": 151.1,
+  "dinamica_db": 24.4,
+  "brilho_hz": 2514,
+  "pct_voz": 32.1,
+  "f0_mediana": 393,
+  "registro": [
+   2.0,
+   5.6,
+   51.1,
+   39.9
+  ],
+  "sustentadas": 44,
+  "sust_max": 3.0,
+  "vibrato_hz": 6.2,
+  "vibrato_cents": 37
+ },
+ "wewerehere-v2b": {
+  "dur": 126.5,
+  "dinamica_db": 25.1,
+  "brilho_hz": 2426,
+  "pct_voz": 33.6,
+  "f0_mediana": 469,
+  "registro": [
+   0.3,
+   4.1,
+   33.2,
+   61.1
+  ],
+  "sustentadas": 32,
+  "sust_max": 2.3,
+  "vibrato_hz": 6.1,
+  "vibrato_cents": 28
+ },
+ "se-paga-pt-usada-como-ref": {
+  "dur": 237.3,
+  "dinamica_db": 16.4,
+  "brilho_hz": 2567,
+  "pct_voz": 6.2,
+  "f0_mediana": 630,
+  "registro": [
+   6.4,
+   7.1,
+   6.4,
+   59.3
+  ],
+  "sustentadas": 2,
+  "sust_max": 0.7,
+  "vibrato_hz": 0,
+  "vibrato_cents": 0
+ },
+ "viking-gods-ref": {
+  "dur": 29.1,
+  "dinamica_db": 9.4,
+  "brilho_hz": 3336,
+  "pct_voz": 23.9,
+  "f0_mediana": 310,
+  "registro": [
+   4.8,
+   21.7,
+   38.4,
+   33.4
+  ],
+  "sustentadas": 2,
+  "sust_max": 0.7,
+  "vibrato_hz": 7.2,
+  "vibrato_cents": 648
+ },
+ "yt-agt-video1": {
+  "dur": 578.2,
+  "dinamica_db": 14.9,
+  "brilho_hz": 2306,
+  "pct_voz": 12.5,
+  "f0_mediana": 286,
+  "registro": [
+   7.1,
+   39.9,
+   22.0,
+   29.4
+  ],
+  "sustentadas": 32,
+  "sust_max": 0.9,
+  "vibrato_hz": 6.9,
+  "vibrato_cents": 54
+ },
+ "yt-agt-video2-standby": {
+  "dur": 529.3,
+  "dinamica_db": 41.1,
+  "brilho_hz": 1747,
+  "pct_voz": 37.6,
+  "f0_mediana": 294,
+  "registro": [
+   7.6,
+   26.9,
+   45.9,
+   18.9
+  ],
+  "sustentadas": 182,
+  "sust_max": 3.1,
+  "vibrato_hz": 7.2,
+  "vibrato_cents": 57
+ }
+}
