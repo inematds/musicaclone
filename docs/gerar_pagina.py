@@ -100,6 +100,7 @@ def movimento(m):
     s.append(f'<text x="2" y="{H-bot:.0f}" class="nlab">{nota(lo)}</text>')
     s.append(f'<text x="{W-2}" y="{H-4}" class="nlab" text-anchor="end">tempo &rarr;</text>')
     s.append(f'<text x="2" y="{H-4}" class="nlab">extensao {hi-lo:.0f} semitons</text>')
+    s.append(f'<line class="ph" x1="0" y1="{top}" x2="0" y2="{H-bot}" style="display:none"/>')
     s.append("</svg>")
     return "".join(s)
 
@@ -139,6 +140,7 @@ for slug in SEL:
     cards.append(f'''
   <article class="song" id="{slug}">
     <header class="shead">
+      <img class="capa" src="capas/{slug}.png" alt="" loading="lazy">
       <div>
         <h3>{html.escape(titulo)}</h3>
         <p class="sdesc">{html.escape(desc)}</p>
@@ -201,19 +203,18 @@ RNOME = {
  "suno-cover-reel-v2": ("suno-cover-reel-v2", "vibrato largo, pouca dinamica"),
  "yt-agt-video2-standby": ("humano ao vivo (AGT)", "VOZ HUMANA REAL: 182 sustentadas e 41 dB — nenhuma gerada chega perto"),
  "yt-agt-video1": ("humano, captacao suja (AGT)", "mesma origem, gravacao contaminada por banda e plateia"),
+ "tiktok-audio": ("audio de TikTok", "baixado de fora, usado so como referencia de estilo"),
+ "viking-gods-ref": ("viking-gods (ref)", "trecho baixado de link; a geracao nunca chegou a rodar"),
 }
 rlin = []
-for k in ["tears-v3a", "tears-v3b", "wewerehere-v2a", "wewerehere-v2b", "fire-v1a", "fire-v1b",
-          "suno-horizons-v1-chops", "suno-horizons-v2-chops", "suno-digital-sky-v1",
-          "suno-digital-sky-v2", "suno-builders-v1-vocal", "suno-builders-v2-vocal",
-          "suno-cover-isolado-v1", "suno-cover-isolado-v2", "suno-cover-reel-v1",
-          "suno-cover-reel-v2", "yt-agt-video2-standby", "yt-agt-video1"]:
+for k in ["yt-agt-video2-standby", "yt-agt-video1", "tiktok-audio", "viking-gods-ref"]:
     if k not in REFS:
         continue
     m = REFS[k]; nome, obs = RNOME[k]
     hum = "hum" if k.startswith("yt-") else ""
     rlin.append(f'''<tr class="{hum}">
       <td><b>{html.escape(nome)}</b><div class="robs">{html.escape(obs)}</div></td>
+      <td class="num">{m.get("tom","?")}</td>
       <td class="num">{m["f0_mediana"]} Hz</td>
       <td class="num">{m["dinamica_db"]} dB</td>
       <td class="num">{m["sustentadas"]}</td>
@@ -221,6 +222,58 @@ for k in ["tears-v3a", "tears-v3b", "wewerehere-v2a", "wewerehere-v2b", "fire-v1
       <td class="num">{vib(m)}</td>
       <td class="num">{m["registro"][3]:.0f}%</td>
     </tr>''')
+
+
+# ------------------------------------------------------------------ acervo
+# Faixas nossas geradas antes (pares a/b = duas faixas por geracao do Suno).
+# Nao temos o spec destas, entao entram sem prompt, mas com audio e medicoes.
+AC = json.load(open(os.path.join(R, "docs", "acervo.json")))
+acards = []
+for slug, a in AC.items():
+    fx = []
+    for fn in a["faixas"]:
+        m = REFS.get(fn)
+        if not m:
+            continue
+        mm, ss = divmod(int(m["dur"]), 60)
+        fx.append(f'''
+      <div class="faixa">
+        <div class="fhead"><b>{html.escape(fn)}</b><span>{mm}:{ss:02d}</span></div>
+        <audio controls preload="none" src="audio/{fn}.mp3"></audio>
+        <div class="mets">
+          {metrica("dinamica", f"{m['dinamica_db']} dB")}
+          {metrica("sustentadas", m["sustentadas"])}
+          {metrica("vibrato", vib(m))}
+          {metrica("brilho", f"{m['brilho_hz']} Hz")}
+        </div>
+        <div class="mlab">movimento da voz <b>· tom {m.get("tom","?")}</b> <span>(confianca {m.get("tom_conf",0)})</span></div>
+        {movimento(m)}
+        <div class="mlab">onde a voz passa o tempo</div>
+        {barras(m["registro"])}
+      </div>''')
+    if not fx:
+        continue
+    acards.append(f'''
+  <article class="song" id="{slug}">
+    <header class="shead">
+      <img class="capa" src="capas/{a["capa"]}.png" alt="" loading="lazy">
+      <div>
+        <h3>{html.escape(a["titulo"])}</h3>
+        <p class="sdesc">{html.escape(a["desc"])}</p>
+      </div>
+      <span class="badge" style="--bc:#94a3b8">acervo</span>
+    </header>
+    <div class="faixas">{"".join(fx)}</div>
+  </article>''')
+
+# ------------------------------------------------------------------ menu
+menu = []
+for slug in SEL:
+    if slug in D:
+        menu.append(f'<a class="mi" href="#{slug}"><img src="capas/{slug}.png" alt="" loading="lazy"><span>{html.escape(INFO[slug][0])}</span></a>')
+for slug, a in AC.items():
+    if any(f in REFS for f in a["faixas"]):
+        menu.append(f'<a class="mi" href="#{slug}"><img src="capas/{a["capa"]}.png" alt="" loading="lazy"><span>{html.escape(a["titulo"])}</span></a>')
 
 # --------------------------------------------------- grafico de dispersao
 pts = []
@@ -258,7 +311,9 @@ TPL = open(os.path.join(R, "docs", "musicas_tpl.html")).read()
 out = (TPL.replace("{{TABELA}}", "".join(linhas))
           .replace("{{CARDS}}", "".join(cards))
           .replace("{{REFS}}", "".join(rlin))
-          .replace("{{SCATTER}}", "".join(sc)))
+          .replace("{{SCATTER}}", "".join(sc))
+          .replace("{{ACERVO}}", "".join(acards))
+          .replace("{{MENU}}", "".join(menu)))
 p = os.path.join(R, "guia", "musicas.html")
 open(p, "w").write(out)
 print("gerado:", p, f"({len(out)//1024} KB, {len(cards)} musicas)")
