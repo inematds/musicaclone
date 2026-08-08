@@ -1,5 +1,7 @@
 # Como criamos os clipes
 
+> Onde a produção parou e o que falta: **[ESTADO.md](ESTADO.md)**
+
 Pipeline completo que transforma uma música gerada num clipe musical, sem
 gerador de vídeo caro: imagem local, animação por keyframe e montagem em ffmpeg
 seguindo um plano de cenas escrito à mão.

@@ -13,6 +13,8 @@ Todas as músicas geradas, com o prompt de estilo, as medições em gráfico e o
 
 ## 🎬 Como criamos os clipes
 
+**Onde a produção parou:** [docs/clipes/ESTADO.md](docs/clipes/ESTADO.md)
+
 Pipeline completo (imagens no flux2-klein, animação por keyframe na Agnes, montagem em ffmpeg com plano de cenas), com os prompts usados e as armadilhas resolvidas: **[docs/clipes](docs/clipes/)**
 
 ## Por que existe
