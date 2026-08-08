@@ -74,6 +74,10 @@
   .plab.neg{margin-top:1em;color:#f87171}
   .prompt code{display:block;font-size:.83rem;line-height:1.7;color:var(--amb2);white-space:pre-wrap;word-break:break-word}
   .pmeta{margin-top:.9em;font-size:.8rem;color:var(--mut);font-family:"JetBrains Mono",monospace}
+  .clipe{margin:16px 0 4px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .clipe details{margin-top:.8em}
+  .clipe summary{cursor:pointer;font-family:Sora;font-size:.82rem;color:var(--amb)}
+  .clipe code{display:block;font-size:.8rem;line-height:1.6;color:var(--amb2);white-space:pre-wrap;word-break:break-word;margin-bottom:.4em}
   .faixas{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
   @media(max-width:780px){.faixas{grid-template-columns:1fr}}
   .faixa{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px}
@@ -341,6 +345,25 @@
       <div class="plab neg">negativos</div><code>lo-fi, mumble, whisper-only, acoustic ballad, autotune heavy</code>
       <div class="pmeta">modelo V5 · modo estilo · voz f · styleWeight 0.85</div>
     </div>
+    <div class="clipe">
+      <div class="plab">história do clipe <span>· banco clipe-v2 · escuro · corte lento · quase sem texto</span></div>
+      <p class="sdesc">Quase toda a duracao na camada historia, com o palco entrando so de relance. Corte lento e apenas duas cartelas: e a versao contemplativa do mesmo tema.</p>
+      <details>
+        <summary>prompts usados nas imagens e na animação</summary>
+        <div class="plab">acabamento aplicado a TODA imagem do projeto</div>
+        <code>raw documentary photograph, live-action cinema still, anamorphic 35mm, natural skin texture and pores, film grain, practical light, shallow depth of field, muted teal and amber grade</code>
+        <div class="plab neg">negativo, também em todas</div>
+        <code>cartoon, 3d render, cgi, pixar, anime, illustration, painting, plastic skin, doll face, oversaturated, text, watermark, extra fingers, deformed</code>
+        <div class="plab">molde do prompt de animação (Agnes)</div>
+        <code>Smooth cinematic transition between the keyframes: &lt;movimento da cena&gt;. Natural motion, consistent characters and style, cinematic camera.</code>
+        <p class="sdesc" style="margin-top:.8em">As 22 descrições de cena e os 22 movimentos
+        de câmera deste banco estão em
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v2-cenas.json">v2-cenas.json</a> e
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v2-movs.json">v2-movs.json</a>.
+        O passo a passo completo está em
+        <a href="https://github.com/inematds/musicaclone/tree/main/docs/clipes">docs/clipes</a>.</p>
+      </details>
+    </div>
     <div class="faixas">
       <div class="faixa">
         <div class="fhead"><b>Faixa 1</b><span>3:01</span></div>
@@ -400,6 +423,25 @@
       <code>epic cinematic anthem, screaming female belting, raspy desperate female vocals, deep cavernous male baritone, viking folk duet, fast vocal call and response, gang vocal choir, orchestral war drums, soaring strings, raw aggressive vocals, 118bpm, huge chorus, brazilian portuguese</code>
       
       <div class="pmeta">modelo V5 · modo estilo · voz f · styleWeight 0.88</div>
+    </div>
+    <div class="clipe">
+      <div class="plab">história do clipe <span>· banco clipe-v2 · escuro · corte médio · fusão e janela</span></div>
+      <p class="sdesc">Duas camadas que se alternam: a arena onde a dupla canta e a historia de quem acorda antes do sol, carrega o que ninguem quis e apanha das portas fechadas. A dupla exposicao e o ponto onde as duas se encontram sem corte. Termina com as luzes da arena caindo devagar.</p>
+      <details>
+        <summary>prompts usados nas imagens e na animação</summary>
+        <div class="plab">acabamento aplicado a TODA imagem do projeto</div>
+        <code>raw documentary photograph, live-action cinema still, anamorphic 35mm, natural skin texture and pores, film grain, practical light, shallow depth of field, muted teal and amber grade</code>
+        <div class="plab neg">negativo, também em todas</div>
+        <code>cartoon, 3d render, cgi, pixar, anime, illustration, painting, plastic skin, doll face, oversaturated, text, watermark, extra fingers, deformed</code>
+        <div class="plab">molde do prompt de animação (Agnes)</div>
+        <code>Smooth cinematic transition between the keyframes: &lt;movimento da cena&gt;. Natural motion, consistent characters and style, cinematic camera.</code>
+        <p class="sdesc" style="margin-top:.8em">As 22 descrições de cena e os 22 movimentos
+        de câmera deste banco estão em
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v2-cenas.json">v2-cenas.json</a> e
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v2-movs.json">v2-movs.json</a>.
+        O passo a passo completo está em
+        <a href="https://github.com/inematds/musicaclone/tree/main/docs/clipes">docs/clipes</a>.</p>
+      </details>
     </div>
     <div class="faixas">
       <div class="faixa">
@@ -461,6 +503,25 @@
       
       <div class="pmeta">modelo V5 · modo cover · voz f · styleWeight 0.88</div>
     </div>
+    <div class="clipe">
+      <div class="plab">história do clipe <span>· banco clipe-v2 · escuro · corte rápido · só fusão</span></div>
+      <p class="sdesc">As mesmas imagens da versao PT, mas embaralhadas e com corte mais rapido, para nao virar clone. Sem janela: aqui a sobreposicao e sempre dupla exposicao.</p>
+      <details>
+        <summary>prompts usados nas imagens e na animação</summary>
+        <div class="plab">acabamento aplicado a TODA imagem do projeto</div>
+        <code>raw documentary photograph, live-action cinema still, anamorphic 35mm, natural skin texture and pores, film grain, practical light, shallow depth of field, muted teal and amber grade</code>
+        <div class="plab neg">negativo, também em todas</div>
+        <code>cartoon, 3d render, cgi, pixar, anime, illustration, painting, plastic skin, doll face, oversaturated, text, watermark, extra fingers, deformed</code>
+        <div class="plab">molde do prompt de animação (Agnes)</div>
+        <code>Smooth cinematic transition between the keyframes: &lt;movimento da cena&gt;. Natural motion, consistent characters and style, cinematic camera.</code>
+        <p class="sdesc" style="margin-top:.8em">As 22 descrições de cena e os 22 movimentos
+        de câmera deste banco estão em
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v2-cenas.json">v2-cenas.json</a> e
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v2-movs.json">v2-movs.json</a>.
+        O passo a passo completo está em
+        <a href="https://github.com/inematds/musicaclone/tree/main/docs/clipes">docs/clipes</a>.</p>
+      </details>
+    </div>
     <div class="faixas">
       <div class="faixa">
         <div class="fhead"><b>Faixa 1</b><span>4:43</span></div>
@@ -520,6 +581,25 @@
       <code>raw emotional male and female duet, gravelly baritone spoken responses, driven chest mix, no falsetto, wide slow vibrato, laid back phrasing, extreme dynamic contrast, quiet intimate verse, huge belted chorus, orchestral build, live raw take, brazilian portuguese, 76bpm</code>
       <div class="plab neg">negativos</div><code>muffled, lo-fi, constant screaming, flat dynamics, autotune, falsetto</code>
       <div class="pmeta">modelo V5 · modo estilo · voz f · styleWeight 0.7</div>
+    </div>
+    <div class="clipe">
+      <div class="plab">história do clipe <span>· banco clipe-v4 · íntimo · corte médio · luz natural</span></div>
+      <p class="sdesc">Uma personagem so, do quarto as cinco da manha ate um palco pequeno de clube. Nada de arena, nada de pirotecnia: camera na mao, luz de janela, sala de ensaio vazia. A progressao e cronologica e termina com ela saindo na madrugada.</p>
+      <details>
+        <summary>prompts usados nas imagens e na animação</summary>
+        <div class="plab">acabamento aplicado a TODA imagem do projeto</div>
+        <code>raw documentary photograph, live-action cinema still, anamorphic 35mm, natural skin texture and pores, film grain, practical light, shallow depth of field, muted teal and amber grade</code>
+        <div class="plab neg">negativo, também em todas</div>
+        <code>cartoon, 3d render, cgi, pixar, anime, illustration, painting, plastic skin, doll face, oversaturated, text, watermark, extra fingers, deformed</code>
+        <div class="plab">molde do prompt de animação (Agnes)</div>
+        <code>Smooth cinematic transition between the keyframes: &lt;movimento da cena&gt;. Natural motion, consistent characters and style, cinematic camera.</code>
+        <p class="sdesc" style="margin-top:.8em">As 22 descrições de cena e os 22 movimentos
+        de câmera deste banco estão em
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v4-cenas.json">v4-cenas.json</a> e
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v4-movs.json">v4-movs.json</a>.
+        O passo a passo completo está em
+        <a href="https://github.com/inematds/musicaclone/tree/main/docs/clipes">docs/clipes</a>.</p>
+      </details>
     </div>
     <div class="faixas">
       <div class="faixa">
@@ -581,6 +661,25 @@
       <div class="plab neg">negativos</div><code>muffled, lo-fi, constant screaming, flat dynamics, autotune, falsetto</code>
       <div class="pmeta">modelo V5 · modo estilo · voz f · styleWeight 0.7</div>
     </div>
+    <div class="clipe">
+      <div class="plab">história do clipe <span>· banco clipe-v5 · gráfico · corte lento · texto no centro</span></div>
+      <p class="sdesc">Azul e ambar, simetrico e quase abstrato. A maquina aparece como sala de servidores e rede de luz fria; o humano aparece como maos, rostos e a mesa de familia em luz quente. O texto e o recurso principal, porque a musica e um manifesto. Fecha com o amanhecer tomando a tela inteira.</p>
+      <details>
+        <summary>prompts usados nas imagens e na animação</summary>
+        <div class="plab">acabamento aplicado a TODA imagem do projeto</div>
+        <code>raw documentary photograph, live-action cinema still, anamorphic 35mm, natural skin texture and pores, film grain, practical light, shallow depth of field, muted teal and amber grade</code>
+        <div class="plab neg">negativo, também em todas</div>
+        <code>cartoon, 3d render, cgi, pixar, anime, illustration, painting, plastic skin, doll face, oversaturated, text, watermark, extra fingers, deformed</code>
+        <div class="plab">molde do prompt de animação (Agnes)</div>
+        <code>Smooth cinematic transition between the keyframes: &lt;movimento da cena&gt;. Natural motion, consistent characters and style, cinematic camera.</code>
+        <p class="sdesc" style="margin-top:.8em">As 22 descrições de cena e os 22 movimentos
+        de câmera deste banco estão em
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v5-cenas.json">v5-cenas.json</a> e
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v5-movs.json">v5-movs.json</a>.
+        O passo a passo completo está em
+        <a href="https://github.com/inematds/musicaclone/tree/main/docs/clipes">docs/clipes</a>.</p>
+      </details>
+    </div>
     <div class="faixas">
       <div class="faixa">
         <div class="fhead"><b>Faixa 1</b><span>2:52</span></div>
@@ -640,6 +739,25 @@
       <code>soulful gospel rock, raspy male lead, female harmony, full choir, hammond organ, handclaps, no falsetto, wide slow vibrato, quiet intro, explosive final chorus, extreme dynamic contrast, brazilian portuguese, 92bpm</code>
       <div class="plab neg">negativos</div><code>muffled, lo-fi, constant screaming, flat dynamics, autotune, falsetto</code>
       <div class="pmeta">modelo V5 · modo estilo · voz m · styleWeight 0.7</div>
+    </div>
+    <div class="clipe">
+      <div class="plab">história do clipe <span>· banco clipe-v3 · moderno · corte rápido · rajada e split</span></div>
+      <p class="sdesc">Alegre e provocativo: banda no telhado ao entardecer, coral batendo palma em sala iluminada, dancarinos em beco pintado, crowd-surf e confete. E o unico com rajada (imagens em 0,28s) e split de tela, para acompanhar o andamento.</p>
+      <details>
+        <summary>prompts usados nas imagens e na animação</summary>
+        <div class="plab">acabamento aplicado a TODA imagem do projeto</div>
+        <code>raw documentary photograph, live-action cinema still, anamorphic 35mm, natural skin texture and pores, film grain, practical light, shallow depth of field, muted teal and amber grade</code>
+        <div class="plab neg">negativo, também em todas</div>
+        <code>cartoon, 3d render, cgi, pixar, anime, illustration, painting, plastic skin, doll face, oversaturated, text, watermark, extra fingers, deformed</code>
+        <div class="plab">molde do prompt de animação (Agnes)</div>
+        <code>Smooth cinematic transition between the keyframes: &lt;movimento da cena&gt;. Natural motion, consistent characters and style, cinematic camera.</code>
+        <p class="sdesc" style="margin-top:.8em">As 22 descrições de cena e os 22 movimentos
+        de câmera deste banco estão em
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v3-cenas.json">v3-cenas.json</a> e
+        <a href="https://github.com/inematds/musicaclone/blob/main/docs/clipes/bancos/v3-movs.json">v3-movs.json</a>.
+        O passo a passo completo está em
+        <a href="https://github.com/inematds/musicaclone/tree/main/docs/clipes">docs/clipes</a>.</p>
+      </details>
     </div>
     <div class="faixas">
       <div class="faixa">
@@ -701,6 +819,7 @@
       <div class="plab neg">negativos</div><code>heavy vocal doubling, stacked harmonies, choir pads, autotune, buried vocals, instrumental heavy mix, wide vibrato, flat dynamics, gap between vocal lines, constant screaming</code>
       <div class="pmeta">modelo V5 · modo estilo · voz f · styleWeight 0.72</div>
     </div>
+    <div class="clipe"><div class="plab">o clipe</div><p class="sdesc">Ainda sem clipe: a musica foi reprovada e sera refeita antes de virar video.</p></div>
     <div class="faixas">
       <div class="faixa">
         <div class="fhead"><b>Faixa 1</b><span>2:53</span></div>
