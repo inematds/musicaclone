@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="pt-BR">
+<html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>musicaclone — clonar e criar música por linha de comando</title>
-<meta content="CLI que pega um link de música, entende o estilo, e clona ou recria a faixa no Suno (via Kie) — com portões que impedem gerar em cima do material errado." name="description"/>
+<title>musicaclone — clonar y crear música desde la línea de comandos</title>
+<meta content="CLI que toma un enlace de música, entiende el estilo y clona o recrea la pista en Suno (vía Kie), con controles que impiden generar sobre el material equivocado." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
@@ -96,7 +96,7 @@
   .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:0 4px}
 </style>
 <link href="https://inematds.github.io/musicaclone/guia/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/musicaclone/guia/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/musicaclone/guia/es/" hreflang="es" rel="alternate"/></head>
-<body><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="./" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">PT</a><a href="en/" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="es/" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">ES</a></div>
+<body><div class="inema-lang" style="position:fixed;right:14px;bottom:14px;z-index:9999;display:flex;gap:2px;padding:4px;border-radius:10px;background:rgba(12,12,16,.82);border:1px solid rgba(226,162,59,.45);font:600 12px/1 Sora,Inter,system-ui,sans-serif;backdrop-filter:blur(8px)" translate="no"><a href="../" hreflang="pt-BR" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">PT</a><a href="../en/" hreflang="en" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#e9e9ee">EN</a><a href="./" hreflang="es" style="padding:6px 8px;border-radius:7px;text-decoration:none;color:#1a1206;background:#E2A23B">ES</a></div>
 <nav><div class="wrap">
 <a class="brand" href="#top"><span class="emoji">🎵</span> musicaclone</a>
 <span class="sep">|</span>
@@ -106,14 +106,14 @@
 <a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a>
 </span>
 <div class="links">
-<a class="sec" href="musicas.html">Músicas</a>
-<a class="sec" href="#oque">O que é</a>
-<a class="sec" href="#fluxo">Como funciona</a>
-<a class="sec" href="#guia">Guia de uso</a>
+<a class="sec" href="musicas.html">Canciones</a>
+<a class="sec" href="#oque">Qué es</a>
+<a class="sec" href="#fluxo">Cómo funciona</a>
+<a class="sec" href="#guia">Guía de uso</a>
 <a class="sec" href="#ajustes">Ajustes</a>
-<a class="sec" href="#custos">Custos</a>
+<a class="sec" href="#custos">Costos</a>
 <a class="sec" href="#roadmap">Roadmap</a>
-<button aria-label="Alternar tema" class="tgl" id="themeToggle" title="Alternar tema">🌙</button>
+<button aria-label="Cambiar tema" class="tgl" id="themeToggle" title="Cambiar tema">🌙</button>
 <a class="btn" href="https://github.com/inematds/musicaclone" rel="noopener" target="_blank">GitHub</a>
 </div>
 </div></nav>
@@ -121,97 +121,97 @@
 <div class="glow"></div>
 <div class="wrap">
 <div>
-<span class="chip">CLI · áudio · Suno via Kie</span>
-<h1>Manda o link. Ele entende a <span class="amb">música</span> antes de refazer.</h1>
-<p class="lead">Clonar uma faixa e criar uma do zero são caminhos diferentes. O musicaclone separa os dois e trava tudo que costuma dar errado no meio.</p>
+<span class="chip">CLI · audio · Suno vía Kie</span>
+<h1>Pásame el enlace. Entiende la <span class="amb">música</span> antes de rehacer.</h1>
+<p class="lead">Clonar una pista y crear una desde cero son caminos diferentes. musicaclone los separa y bloquea todo lo que suele salir mal en el proceso.</p>
 <div class="cta">
-<a class="btn" href="#guia">Começar o guia</a>
-<a class="btn ghost" href="https://github.com/inematds/musicaclone" rel="noopener" target="_blank">Ver no GitHub</a>
+<a class="btn" href="#guia">Empezar la guía</a>
+<a class="btn ghost" href="https://github.com/inematds/musicaclone" rel="noopener" target="_blank">Ver en GitHub</a>
 </div>
 </div>
-<figure><img alt="Capa do projeto musicaclone" src="assets/hero.png"/></figure>
+<figure><img alt="Portada del proyecto musicaclone" src="../assets/hero.png"/></figure>
 </div>
 </header>
 <section id="oque"><div class="wrap">
-<span class="chip">O que é</span>
-<h2>Um CLI de uma linha por etapa, com portão antes do caro</h2>
-<p class="sub">Você passa um link (YouTube, Facebook, TikTok, qualquer coisa que o yt-dlp abra). Ele baixa o áudio, pergunta ao Gemini se aquilo é mesmo música, extrai estilo e letra, monta um spec, mostra pra você — e só então gera no Suno pela API do Kie.</p>
+<span class="chip">Qué es</span>
+<h2>Un CLI de una línea por etapa, con un control antes de lo costoso</h2>
+<p class="sub">Pasas un enlace (YouTube, Facebook, TikTok, cualquier cosa que yt-dlp pueda abrir). Descarga el audio, le pregunta a Gemini si realmente es música, extrae el estilo y la letra, prepara una spec, te la muestra — y solo entonces genera en Suno mediante la API de Kie.</p>
 <div class="grid g3">
-<div class="card"><h3>🎧 Clone de verdade</h3><p>Usa o áudio original como referência (<code>upload-cover</code>), então melodia e estrutura ficam. Não é "uma música parecida".</p></div>
-<div class="card"><h3>🛑 Portões de sanidade</h3><p>Não é música? Trava. Letra veio truncada? Avisa. Fonte é um teaser de 29 s? Mostra a duração antes de você gastar crédito.</p></div>
-<div class="card"><h3>📁 Estado em disco</h3><p>Cada faixa vira uma pasta com <code>spec.json</code>: taskId gravado antes do poll, custo medido de verdade, e <code>regen</code> pra ajustar sem reanalisar.</p></div>
+<div class="card"><h3>🎧 Clon real</h3><p>Usa el audio original como referencia (<code>upload-cover</code>), entonces la melodía y la estructura se mantienen. No es «una canción parecida».</p></div>
+<div class="card"><h3>🛑 Puertas de cordura</h3><p>¿No es música? Se bloquea. ¿La letra llegó truncada? Avísame. ¿La fuente es un teaser de 29 s? Muestra la duración antes de que gastes crédito.</p></div>
+<div class="card"><h3>📁 Estado en disco</h3><p>Cada pista se convierte en una carpeta con <code>spec.json</code>: taskId guardado antes del poll, costo medido de verdad, y <code>regen</code> para ajustar sin volver a analizar.</p></div>
 </div>
 </div></section>
 <section id="fluxo"><div class="wrap">
-<span class="chip">Como funciona</span>
-<h2>Dois caminhos, um portão no meio</h2>
-<p class="sub">O caminho de cima é o clone (parte de um link). O de baixo é a criação (parte de uma ideia). Os dois passam pelo mesmo portão antes de gastar crédito.</p>
+<span class="chip">Cómo funciona</span>
+<h2>Dos caminos, un control en medio</h2>
+<p class="sub">El camino de arriba es el clon (parte de un enlace). El de abajo es la creación (parte de una idea). Ambos pasan por la misma puerta antes de gastar crédito.</p>
 <div class="flow">
-<span>link</span><span class="arr">→</span>
-<span>yt-dlp: resolve + baixa</span><span class="arr">→</span>
-<span>Gemini: é música?</span><span class="arr">→</span>
+<span>enlace</span><span class="arr">→</span>
+<span>yt-dlp: resuelve + descarga</span><span class="arr">→</span>
+<span>Gemini: ¿es música?</span><span class="arr">→</span>
 <span>estilo + letra</span><span class="arr">→</span>
 <span>spec.json</span><span class="arr">→</span>
-<span>🛑 seu ok</span><span class="arr">→</span>
-<span>upload da referência</span><span class="arr">→</span>
+<span>🛑 tu aprobación</span><span class="arr">→</span>
+<span>carga de la referencia</span><span class="arr">→</span>
 <span>Suno (Kie)</span><span class="arr">→</span>
 <span>poll</span><span class="arr">→</span>
-<span>2 faixas MP3</span>
+<span>2 pistas MP3</span>
 </div>
 <div class="grid g2" style="margin-top:26px">
-<div class="card"><h3>Clone — <code>prep</code> + <code>clone</code></h3><p>Áudio original vira referência no Kie. O peso <code>--audio-weight</code> decide o quanto a faixa nova gruda no original: 0.9 é quase o mesmo arranjo, 0.4 é só inspirado.</p></div>
-<div class="card"><h3>Criação — <code>cria</code> + <code>regen</code></h3><p>Sem referência. Você entrega tags de estilo e a letra; o modelo faz o resto. É o caminho pra trilha, jingle, tema original.</p></div>
+<div class="card"><h3>Clonación — <code>prep</code> + <code>clone</code></h3><p>El audio original se convierte en referencia en Kie. El peso <code>--audio-weight</code> decide cuánto se parece la nueva pista al original: 0.9 es casi el mismo arreglo, 0.4 solo está inspirado.</p></div>
+<div class="card"><h3>Creación — <code>cria</code> + <code>regen</code></h3><p>Sin referencia. Entregas etiquetas de estilo y la letra; el modelo hace el resto. Es el camino para una banda sonora, un jingle o un tema original.</p></div>
 </div>
 </div></section>
 <section id="pre"><div class="wrap">
-<span class="chip">Pré-requisitos</span>
-<h2>Três chaves e dois binários</h2>
-<p class="sub">Nada roda como serviço. É um script bash com <code>curl</code>, <code>jq</code>, <code>yt-dlp</code> e um python de análise.</p>
+<span class="chip">Requisitos previos</span>
+<h2>Tres claves y dos binarios</h2>
+<p class="sub">Nada se ejecuta como servicio. Es un script bash con <code>curl</code>, <code>jq</code>, <code>yt-dlp</code> y un python de análisis.</p>
 <div class="grid g3">
-<div class="card"><h3>Binários</h3><p>yt-dlp para o download, jq para o estado, ffmpeg para a extração de áudio.</p><pre><span class="c"># debian/ubuntu</span>
+<div class="card"><h3>Binarios</h3><p>yt-dlp para la descarga, jq para el estado, ffmpeg para la extracción de audio.</p><pre><span class="c"># debian/ubuntu</span>
 <span class="k">sudo apt install</span> jq ffmpeg
 <span class="k">pipx install</span> yt-dlp</pre></div>
-<div class="card"><h3>Chave do Kie</h3><p>É quem gera a música. Pegue em kie.ai/api-key e ponha num <code>.env</code> — o script lê em runtime, nunca versiona.</p><pre><span class="c"># .env ao lado do script</span>
+<div class="card"><h3>Clave de Kie</h3><p>Es quien genera la música. Consíguela en kie.ai/api-key y ponla en un <code>.env</code> — el script lo lee en tiempo de ejecución, nunca lo versiona.</p><pre><span class="c"># .env al lado del script</span>
 KIE_API_KEY=<span class="s">sk-...</span></pre></div>
-<div class="card"><h3>Chave do Gemini</h3><p>É quem escuta o áudio e diz se é música, qual o estilo e qual a letra.</p><pre><span class="c"># mesmo .env</span>
+<div class="card"><h3>Clave de Gemini</h3><p>Es quien escucha el audio y dice si es música, cuál es el estilo y cuál es la letra.</p><pre><span class="c"># mismo .env</span>
 GOOGLE_API_KEY=<span class="s">...</span></pre></div>
 </div>
 </div></section>
 <section id="guia"><div class="wrap">
-<span class="chip">Guia de uso · passo a passo</span>
-<h2>Do link ao MP3</h2>
-<p class="sub">Comandos reais. O único passo que gasta crédito é o 3 — e ele só roda depois que você olhou o passo 2.</p>
+<span class="chip">Guía de uso · paso a paso</span>
+<h2>Del enlace al MP3</h2>
+<p class="sub">Comandos reales. El único paso que consume créditos es el 3, y solo se ejecuta después de que revises el paso 2.</p>
 <div class="step"><div class="b">1</div><div>
-<h3>Preparar a faixa</h3>
-<p>Resolve o link, baixa o áudio, classifica e analisa. Não gasta crédito do Kie.</p>
+<h3>Preparar la pista</h3>
+<p>Resuelve el enlace, descarga el audio, lo clasifica y lo analiza. No gasta crédito de Kie.</p>
 <pre><span class="k">bash musica.sh prep</span> <span class="s">"https://youtube.com/watch?v=..."</span> minha-faixa</pre>
 </div></div>
 <div class="step"><div class="b">2</div><div>
-<h3>Olhar o portão</h3>
-<p>Aqui você confere o que ele entendeu. Se a duração for de teaser ou a letra vier incompleta, pare e arrume antes.</p>
+<h3>Revisar la puerta</h3>
+<p>Aquí compruebas lo que entendió. Si la duración es de teaser o la letra está incompleta, detente y corrígelo antes.</p>
 <pre><span class="k">bash musica.sh spec</span> minha-faixa
 
 <span class="c">--- viking-gods  [clone] ---</span>
-<span class="c">fonte:    «Viking Gods» by Bob Dominator</span>
-<span class="c">duracao:  29.07s          &lt;- teaser, nao e a musica inteira</span>
+<span class="c">fuente:    «Viking Gods» by Bob Dominator</span>
+<span class="c">duración:  29.07s          &lt;- teaser, no es la música entera</span>
 <span class="c">modo:     cover</span>
 <span class="c">style:    epic pop, cinematic, female lead vocals, nordic, driving rhythm</span>
-<span class="c">letra completa? false  (75 palavras)</span></pre>
+<span class="c">letra completa? false  (75 palabras)</span></pre>
 </div></div>
 <div class="step"><div class="b">3</div><div>
-<h3>Gerar (isto gasta crédito)</h3>
-<p>Sobe a referência, dispara o job e grava o <code>taskId</code> antes de qualquer poll — se a conexão cair, você retoma em vez de pagar de novo.</p>
+<h3>Generar (esto consume créditos)</h3>
+<p>Sube la referencia, inicia el job y guarda el <code>taskId</code> antes de cualquier poll — si se cae la conexión, retomas en lugar de volver a pagar.</p>
 <pre><span class="k">bash musica.sh clone</span> minha-faixa <span class="k">--audio-weight</span> 0.85</pre>
 </div></div>
 <div class="step"><div class="b">4</div><div>
-<h3>Acompanhar e baixar</h3>
-<p>As URLs do Suno expiram, então <code>get</code> baixa na hora e ainda calcula o custo real da geração.</p>
+<h3>Seguir y descargar</h3>
+<p>Las URL de Suno caducan, así que <code>get</code> la descarga de inmediato y además calcula el costo real de la generación.</p>
 <pre><span class="k">bash musica.sh status</span> minha-faixa   <span class="c"># PENDING → TEXT_SUCCESS → FIRST_SUCCESS → SUCCESS</span>
 <span class="k">bash musica.sh get</span> minha-faixa      <span class="c"># faixa-1.mp3, faixa-2.mp3, creditos gastos: 12</span></pre>
 </div></div>
 <div class="step"><div class="b">5</div><div>
-<h3>Criar do zero (o outro caminho)</h3>
-<p>Sem link. Você escreve o estilo em tags e entrega a letra num arquivo com <code>[Verse]</code> / <code>[Chorus]</code>.</p>
+<h3>Crear desde cero (el otro camino)</h3>
+<p>Sin enlace. Escribes el estilo en etiquetas y entregas la letra en un archivo con <code>[Verse]</code> / <code>[Chorus]</code>.</p>
 <pre><span class="k">bash musica.sh cria</span> meu-tema \
   <span class="k">--style</span> <span class="s">"epic cinematic pop, powerful female belt vocals, war drums, 118bpm"</span> \
   <span class="k">--title</span> <span class="s">"Se Paga"</span> <span class="k">--voz</span> f <span class="k">--letra</span> letra.txt
@@ -220,48 +220,48 @@ GOOGLE_API_KEY=<span class="s">...</span></pre></div>
 </div></section>
 <section id="ajustes"><div class="wrap">
 <span class="chip">Ajustes</span>
-<h2>O que dá pra girar quando o resultado sai torto</h2>
-<p class="sub">Tudo vive no <code>spec.json</code>, então <code>regen</code> refaz com o ajuste sem repetir download nem análise.</p>
+<h2>Qué puedes ajustar cuando el resultado sale torcido</h2>
+<p class="sub">Todo está en el <code>spec.json</code>, entonces <code>regen</code> vuelve a hacerlo con el ajuste sin repetir la descarga ni el análisis.</p>
 <table>
-<tr><th>Flag</th><th>O que faz</th><th>Quando mexer</th></tr>
-<tr><td class="mono">--style</td><td>tags de som (gênero, instrumento, vocal, andamento)</td><td>timbre saiu errado</td></tr>
-<tr><td class="mono">--negative</td><td>o que evitar</td><td>saiu acústico e você queria pesado</td></tr>
-<tr><td class="mono">--voz m|f</td><td>gênero do vocal</td><td>vocal veio trocado</td></tr>
-<tr><td class="mono">--audio-weight</td><td>só no clone: quanto puxa a referência</td><td>0.85–0.95 cola no original, 0.4 só inspira</td></tr>
-<tr><td class="mono">--style-weight</td><td>adesão ao estilo descrito</td><td>ignorou as tags</td></tr>
-<tr><td class="mono">--weirdness</td><td>desvio criativo</td><td>ficou óbvio demais</td></tr>
-<tr><td class="mono">--model</td><td>V4 … V5_5 (default V5)</td><td>V5_5 é o único com <code>--duration</code></td></tr>
-<tr><td class="mono">--instrumental</td><td>sem vocal</td><td>trilha e BGM</td></tr>
+<tr><th>Flag</th><th>Qué hace</th><th>Cuándo ajustar</th></tr>
+<tr><td class="mono">--style</td><td>etiquetas de sonido (género, instrumento, voz, tempo)</td><td>el timbre salió mal</td></tr>
+<tr><td class="mono">--negative</td><td>qué evitar</td><td>salió acústica y tú querías algo pesado</td></tr>
+<tr><td class="mono">--voz m|f</td><td>género de la voz</td><td>la voz llegó intercambiada</td></tr>
+<tr><td class="mono">--audio-weight</td><td>solo en el clon: cuánto influye la referencia</td><td>0.85–0.95 se apega al original; 0.4 solo sirve de inspiración</td></tr>
+<tr><td class="mono">--style-weight</td><td>adhesión al estilo descrito</td><td>ignoró las etiquetas</td></tr>
+<tr><td class="mono">--weirdness</td><td>desvío creativo</td><td>quedó demasiado obvio</td></tr>
+<tr><td class="mono">--model</td><td>V4 … V5_5 (default V5)</td><td>V5_5 es el único con <code>--duration</code></td></tr>
+<tr><td class="mono">--instrumental</td><td>sin voz</td><td>pista y BGM</td></tr>
 </table>
-<p class="sub" style="margin-top:22px">Estilo bom é tag curta em inglês, separada por vírgula: <code>nordic folk metal, epic, male gang vocals, war drums, low brass, 140bpm</code>. Frase corrida funciona pior.</p>
+<p class="sub" style="margin-top:22px">Un buen estilo es una etiqueta corta en inglés, separada por comas: <code>nordic folk metal, epic, male gang vocals, war drums, low brass, 140bpm</code>. Las frases corridas funcionan peor.</p>
 </div></section>
 <section id="custos"><div class="wrap">
-<span class="chip">Custos</span>
-<h2>Medido, não estimado</h2>
-<p class="sub">O script grava o saldo antes de gerar e escreve o gasto real no <code>spec.json</code>. O número abaixo saiu de uma geração de verdade em 2026-08-05, não de tabela de terceiro.</p>
+<span class="chip">Costos</span>
+<h2>Medido, no estimado</h2>
+<p class="sub">El script registra el saldo antes de generar y escribe el gasto real en el <code>spec.json</code>. El número de abajo salió de una generación real el 2026-08-05, no de una tabla de terceros.</p>
 <table>
-<tr><th>Serviço</th><th>Preço</th><th>Faz clone de áudio?</th></tr>
-<tr><td>Suno via Kie (este projeto)</td><td>12 créditos por geração de 2 faixas ≈ US$ 0,06 (~US$ 0,03/faixa)</td><td>Sim — <code>upload-cover</code></td></tr>
-<tr><td>Suno direto (assinatura)</td><td>5 créditos/música; Pro US$ 10/mês ≈ 500 músicas</td><td>Só na web, sem API oficial</td></tr>
-<tr><td>ElevenLabs Music</td><td>~US$ 0,30–0,40 por minuto gerado (3 min ≈ US$ 1,00–1,20)</td><td>Não</td></tr>
-<tr><td>Udio</td><td>crédito por geração; Standard US$ 10/mês = 2.400 créditos</td><td>Sem API pública madura</td></tr>
+<tr><th>Servicio</th><th>Precio</th><th>¿Clona audio?</th></tr>
+<tr><td>Suno vía Kie (este proyecto)</td><td>12 créditos por generación de 2 pistas ≈ US$ 0,06 (~US$ 0,03/pista)</td><td>Sí — <code>upload-cover</code></td></tr>
+<tr><td>Suno directo (suscripción)</td><td>5 créditos/canción; Pro US$ 10/mes ≈ 500 canciones</td><td>Solo en la web, sin API oficial</td></tr>
+<tr><td>ElevenLabs Music</td><td>~US$ 0,30–0,40 por minuto generado (3 min ≈ US$ 1,00–1,20)</td><td>No</td></tr>
+<tr><td>Udio</td><td>créditos por generación; Standard US$ 10/mes = 2.400 créditos</td><td>Sin una API pública madura</td></tr>
 </table>
-<p class="sub" style="margin-top:22px">Resumo: o Kie ganha aqui por ser o único dos três com clone a partir de áudio de referência, e por sair ~17–20× mais barato que o ElevenLabs por faixa.</p>
+<p class="sub" style="margin-top:22px">Resumen: Kie gana aquí por ser el único de los tres que clona a partir de audio de referencia y porque cuesta ~17–20× menos que ElevenLabs por pista.</p>
 </div></section>
 <section id="roadmap"><div class="wrap">
 <span class="chip">Roadmap</span>
-<h2>O que existe e o que vem</h2>
-<p class="sub">O que está marcado como pronto foi rodado ponta a ponta, incluindo uma geração paga real.</p>
-<div class="phase"><div class="tag">Pronto</div><div class="d"><strong>Clone e criação, com portões</strong><span>prep, spec, clone, cria, regen, status, get, saldo. Custo medido automaticamente.</span></div></div>
-<div class="phase"><div class="tag">Pronto</div><div class="d"><strong>Entrega no Telegram</strong><span>enviar.sh manda o MP3 direto no bot.</span></div></div>
-<div class="phase"><div class="tag">Próximo</div><div class="d"><strong>Persona</strong><span>Reusar a mesma voz entre faixas. O endpoint ainda precisa ser confirmado na API do Kie.</span></div></div>
-<div class="phase"><div class="tag">Próximo</div><div class="d"><strong>Extend e stems</strong><span>Esticar uma faixa boa e separar instrumental de vocal.</span></div></div>
-<div class="phase"><div class="tag">Depois</div><div class="d"><strong>Videoclipe</strong><span>Ligar a saída no pipeline de vídeo do INEMA.</span></div></div>
+<h2>Lo que existe y lo que viene</h2>
+<p class="sub">Lo que aparece como listo se ejecutó de principio a fin, incluida una generación real de pago.</p>
+<div class="phase"><div class="tag">Listo</div><div class="d"><strong>Clonación y creación, con controles</strong><span>prep, spec, clone, cria, regen, status, get, saldo. Costo medido automáticamente.</span></div></div>
+<div class="phase"><div class="tag">Listo</div><div class="d"><strong>Entrega en Telegram</strong><span>enviar.sh envía el MP3 directamente al bot.</span></div></div>
+<div class="phase"><div class="tag">Siguiente</div><div class="d"><strong>Persona</strong><span>Reutiliza la misma voz entre pistas. Aún hay que confirmar el endpoint en la API de Kie.</span></div></div>
+<div class="phase"><div class="tag">Siguiente</div><div class="d"><strong>Extender y stems</strong><span>Extender una buena pista y separar el instrumental de la voz.</span></div></div>
+<div class="phase"><div class="tag">Después</div><div class="d"><strong>Videoclip</strong><span>Conectar la salida al pipeline de video de INEMA.</span></div></div>
 </div></section>
 <footer>
 <div class="wrap">
 <div class="pill">bash</div><div class="pill">python</div><div class="pill">Kie / Suno</div><div class="pill">Gemini</div><div class="pill">yt-dlp</div>
-<p style="margin-top:18px">musicaclone · clonar e criar música por linha de comando ·
+<p style="margin-top:18px">musicaclone · clonar y crear música desde la línea de comandos ·
       <a href="https://github.com/inematds/musicaclone">inematds/musicaclone</a> ·
       <a href="https://inema.club">INEMA.CLUB</a></p>
 </div>

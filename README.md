@@ -1,5 +1,7 @@
 # 🎵 musicaclone
 
+**🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
+
 CLI para **clonar** ou **criar** música a partir de um link, usando Suno pela API do Kie.
 Clonar e criar são caminhos diferentes — o script trata assim, e trava o que costuma dar errado no meio.
 
